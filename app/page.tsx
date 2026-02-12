@@ -260,12 +260,29 @@ export default function MediaKit() {
         </div>
       </nav>
 
+      {/* ── BANNER ───────────────────────────────────────────────────── */}
+      <div className="w-full">
+        <Image
+          src="/banner.jpg"
+          alt="Open Residency — podcast studio"
+          width={1920}
+          height={720}
+          className="w-full h-48 md:h-72 lg:h-96 object-cover"
+          priority
+        />
+      </div>
+
       {/* ── HERO ────────────────────────────────────────────────────── */}
-      <section className="max-w-6xl mx-auto px-6 pt-16 md:pt-24 pb-12">
+      <section className="max-w-6xl mx-auto px-6 pt-14 md:pt-20 pb-12">
         <div className="max-w-3xl mb-14">
-          <p className="text-xs font-semibold tracking-[0.2em] uppercase text-neutral-400 mb-4">
-            Cross-Platform Podcast Analytics
-          </p>
+          <div className="flex items-center gap-3 mb-4">
+            <p className="text-xs font-semibold tracking-[0.2em] uppercase text-neutral-400">
+              Cross-Platform Podcast Analytics
+            </p>
+            <span className="text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full bg-neutral-900 text-white">
+              Last 6 Months
+            </span>
+          </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] mb-5">
             Building the #1 podcast
             <br />
@@ -273,10 +290,10 @@ export default function MediaKit() {
           </h1>
           <p className="text-lg text-neutral-500 leading-relaxed max-w-2xl">
             Open Residency is a long-form interview podcast featuring
-            world-class entrepreneurs, creators, and thought leaders. Across
-            YouTube and all major podcast platforms, we&apos;ve generated over
-            1.8 million views in our first year with explosive month-over-month
-            growth.
+            world-class entrepreneurs, creators, and thought leaders. In the
+            last 6 months alone, we&apos;ve generated over 1.8 million views
+            across YouTube and all major podcast platforms with explosive
+            month-over-month growth.
           </p>
         </div>
 
@@ -313,7 +330,7 @@ export default function MediaKit() {
       <section className="max-w-6xl mx-auto px-6 py-16">
         <SectionHeader
           title="Monthly Growth"
-          subtitle="Spotify streams & downloads — August 2025 to January 2026"
+          subtitle="Spotify streams & downloads — Last 6 months (Aug '25 – Jan '26)"
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -443,7 +460,7 @@ export default function MediaKit() {
       <section className="max-w-6xl mx-auto px-6 py-16">
         <SectionHeader
           title="Top Episodes"
-          subtitle="Cross-platform performance — Spotify streams + YouTube views"
+          subtitle="Cross-platform performance (last 6 months) — Spotify streams + YouTube views"
         />
 
         <div className="bg-white rounded-2xl border border-neutral-200/60 shadow-sm overflow-hidden">
@@ -524,7 +541,7 @@ export default function MediaKit() {
       <section className="max-w-6xl mx-auto px-6 py-16">
         <SectionHeader
           title="YouTube Performance"
-          subtitle="Channel analytics — August 2025 to February 2026"
+          subtitle="Channel analytics — Last 6 months (Aug '25 – Feb '26)"
         />
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-8">
@@ -581,7 +598,7 @@ export default function MediaKit() {
             </div>
           </div>
 
-          {/* Shorts + Monetization */}
+          {/* Shorts + Engagement */}
           <div className="space-y-6">
             <div className="bg-white rounded-2xl border border-neutral-200/60 shadow-sm p-6">
               <h3 className="text-sm font-semibold text-neutral-500 uppercase tracking-wider mb-4">
@@ -601,20 +618,20 @@ export default function MediaKit() {
 
             <div className="bg-white rounded-2xl border border-neutral-200/60 shadow-sm p-6">
               <h3 className="text-sm font-semibold text-neutral-500 uppercase tracking-wider mb-4">
-                Monetization
+                Engagement
               </h3>
               <div className="grid grid-cols-3 gap-4">
                 <div>
-                  <p className="text-2xl font-bold">$18.8K</p>
-                  <p className="text-xs text-neutral-400">Ad Revenue</p>
+                  <p className="text-2xl font-bold">49.8K</p>
+                  <p className="text-xs text-neutral-400">Total Likes</p>
                 </div>
                 <div>
-                  <p className="text-2xl font-bold">$9.68</p>
-                  <p className="text-xs text-neutral-400">CPM</p>
+                  <p className="text-2xl font-bold">3.3K</p>
+                  <p className="text-xs text-neutral-400">Comments</p>
                 </div>
                 <div>
-                  <p className="text-2xl font-bold">$9.83</p>
-                  <p className="text-xs text-neutral-400">RPM</p>
+                  <p className="text-2xl font-bold">12:38</p>
+                  <p className="text-xs text-neutral-400">Avg View Duration</p>
                 </div>
               </div>
             </div>
@@ -631,7 +648,7 @@ export default function MediaKit() {
       <section className="max-w-6xl mx-auto px-6 py-16">
         <SectionHeader
           title="Audience Profile"
-          subtitle="Listener demographics across all podcast platforms"
+          subtitle="Listener demographics across all podcast platforms — Last 6 months"
         />
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
