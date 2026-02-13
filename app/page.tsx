@@ -400,16 +400,6 @@ export default function MediaKit() {
               </div>
             </div>
             <div className="bg-white rounded-2xl border border-neutral-200/60 shadow-sm p-6">
-              <p className="text-4xl font-bold">12:38</p>
-              <p className="text-sm text-neutral-500 mt-1">
-                Avg view duration
-              </p>
-              <div className="flex items-center gap-1.5 mt-3 text-xs text-neutral-400">
-                <span className="inline-block w-1.5 h-1.5 rounded-full bg-neutral-900" />
-                Across all 220 videos
-              </div>
-            </div>
-            <div className="bg-white rounded-2xl border border-neutral-200/60 shadow-sm p-6">
               <p className="text-4xl font-bold">22</p>
               <p className="text-sm text-neutral-500 mt-1">
                 Long-form episodes
