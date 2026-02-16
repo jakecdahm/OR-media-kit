@@ -261,7 +261,7 @@ export default function MediaKit() {
           alt="Open Residency — podcast studio"
           width={1920}
           height={720}
-          className="w-full h-48 md:h-72 lg:h-96 object-cover"
+          className="w-full h-48 md:h-72 lg:h-[28rem] xl:h-[32rem] object-cover"
           priority
         />
       </div>
