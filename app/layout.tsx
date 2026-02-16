@@ -5,13 +5,13 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Open Residency — Media Kit",
+  title: "Open Residency — Partnership Deck",
   description:
-    "Cross-platform podcast analytics for Open Residency. 1.8M+ views, 255K+ watch hours, 27K+ subscribers.",
+    "The podcast for founders and operators. 1.8M+ cross-platform views, 15.2M impressions, 472% stream growth. Hosted by Mark Brazil.",
   openGraph: {
-    title: "Open Residency — Media Kit",
+    title: "Open Residency — Partnership Deck",
     description:
-      "Cross-platform podcast analytics for Open Residency. 1.8M+ views across YouTube and all major podcast platforms.",
+      "The podcast for founders and operators. 1.8M+ cross-platform views, 15.2M impressions, 472% stream growth.",
     type: "website",
   },
 };

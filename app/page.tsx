@@ -6,9 +6,6 @@ import {
   Area,
   BarChart,
   Bar,
-  PieChart,
-  Pie,
-  Cell,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -38,15 +35,6 @@ const MONTHLY_STREAMS = [
   { month: "Jan '26", streams: 39586 },
 ];
 
-const FOLLOWER_GROWTH = [
-  { month: "Aug", followers: 669 },
-  { month: "Sep", followers: 1533 },
-  { month: "Oct", followers: 2195 },
-  { month: "Nov", followers: 2904 },
-  { month: "Dec", followers: 3800 },
-  { month: "Jan", followers: 5331 },
-];
-
 const AGE_DATA = [
   { range: "18–22", value: 5.1 },
   { range: "23–27", value: 22.3 },
@@ -66,22 +54,52 @@ const GEO_DATA = [
   { country: "Other", value: 26.9 },
 ];
 
-const PLATFORM_DATA = [
-  { name: "Spotify", value: 84.1 },
-  { name: "Apple Podcasts", value: 14.0 },
-  { name: "Other", value: 1.9 },
+const PUBLISHED_GUESTS = [
+  { name: "Robert Greene", company: "Author", note: "48 Laws of Power" },
+  { name: "Dee Murthy", company: "GHST", note: "9 figures" },
+  { name: "Bill Shufelt", company: "Athletic Brewing", note: "9 figures" },
+  { name: "Nate Checketts", company: "Rhone", note: "9 figures" },
+  { name: "Ryan Bartlett", company: "True Classic", note: "9 figures" },
+  { name: "Bryan Garafalow", company: "Skullcandy", note: "9 figures" },
+  { name: "Sean Frank", company: "Ridge", note: "9 figures" },
+  { name: "George Heaton", company: "Represent", note: "9 figures" },
+  { name: "Kent Yoshimura", company: "NeuroGum", note: "9 figures" },
+  { name: "Joel Kocher", company: "Humann", note: "9 figures" },
+  { name: "Oliver Zak", company: "Mad Rabbit", note: "8 figures" },
+  { name: "Manny Lubin", company: "Slate Milk", note: "8 figures" },
+  { name: "Nick Shackelford", company: "Brez / Structured", note: "8 figures" },
+  { name: "Simon Molnar", company: "Flagship.ai", note: "Family founded Afterpay" },
+  { name: "Sahil Bloom", company: "Creator", note: "NYT Best Seller" },
+  { name: "Dan Koe", company: "Creator", note: "Live Episode" },
+  { name: "Caleb Ralston", company: "Creator", note: "Hormozi / Vayner" },
+  { name: "Oren John", company: "Creator", note: "Internet's Creative Director" },
+  { name: "RPN", company: "Creator", note: "" },
 ];
 
-const DEVICE_DATA = [
-  { name: "iPhone", value: 81.1 },
-  { name: "Android", value: 12.8 },
-  { name: "Other", value: 6.1 },
-];
-
-const GENDER_DATA = [
-  { name: "Male", value: 82.9 },
-  { name: "Female", value: 14.6 },
-  { name: "Other", value: 2.5 },
+const UPCOMING_GUESTS = [
+  { name: "Mark Manson", company: "Author", note: "NYT Best Seller", filmed: true },
+  { name: "Kane Kallaway", company: "Creator", note: "", filmed: true },
+  { name: "Samir", company: "Colin and Samir", note: "Creator", filmed: true },
+  { name: "Taylor Holiday", company: "Common Thread Collective", note: "8 figures", filmed: false },
+  { name: "Daniel Arsham", company: "Artist / Creator", note: "", filmed: false },
+  { name: "Paddy Gallaway", company: "YouTube Strategist", note: "", filmed: false },
+  { name: "Hormozi", company: "Acquisition.com", note: "", filmed: false },
+  { name: "Simon Squibb", company: "Entrepreneur", note: "", filmed: false },
+  { name: "Codie Sanchez", company: "Contrarian Thinking", note: "", filmed: false },
+  { name: "Dom Iacavone", company: "RAW & more", note: "9 figures", filmed: false },
+  { name: "Rob Dyrdek", company: "Dyrdek Machine", note: "", filmed: false },
+  { name: "Marc Ecko", company: "Ecko", note: "", filmed: false },
+  { name: "OMG Adrian", company: "Creator", note: "", filmed: false },
+  { name: "Jeff Byers", company: "Momentous", note: "9 figures", filmed: false },
+  { name: "Megan Lightcap", company: "Slow Ventures", note: "Creator Fund", filmed: false },
+  { name: "Dan Martell", company: "SaaS Academy", note: "", filmed: false },
+  { name: "Matt Gray", company: "Creator", note: "", filmed: false },
+  { name: "Baseball Lifestyle", company: "", note: "9 figures", filmed: false },
+  { name: "Alex Sobol", company: "Millennium", note: "9 figures", filmed: false },
+  { name: "Geoffrey Woo", company: "Anti Fund", note: "", filmed: false },
+  { name: "Chris Voss", company: "Author", note: "Never Split the Difference", filmed: false },
+  { name: "Dad Gang", company: "", note: "8 figures", filmed: false },
+  { name: "Bruno Casanovas", company: "Nude", note: "8 figures", filmed: false },
 ];
 
 /* ==========================================================================
@@ -91,7 +109,6 @@ const GENDER_DATA = [
 const CHART_BLACK = "#1a1a1a";
 const CHART_GRAY = "#888";
 const ACCENT = "#1a1a1a";
-const PIE_COLORS = ["#1a1a1a", "#888", "#ccc", "#ddd"];
 const GEO_BAR = "#1a1a1a";
 
 /* ==========================================================================
@@ -172,54 +189,42 @@ function SectionHeader({
   );
 }
 
-function DonutChart({
-  data,
-  title,
+function GuestCard({
+  name,
+  company,
+  note,
+  filmed,
+  upcoming,
 }: {
-  data: { name: string; value: number }[];
-  title: string;
+  name: string;
+  company?: string;
+  note?: string;
+  filmed?: boolean;
+  upcoming?: boolean;
 }) {
   return (
-    <div>
-      <h3 className="text-sm font-semibold text-neutral-500 uppercase tracking-wider mb-4">
-        {title}
-      </h3>
-      <div className="flex items-center gap-6">
-        <div className="w-32 h-32 flex-shrink-0">
-          <ResponsiveContainer width="100%" height="100%">
-            <PieChart>
-              <Pie
-                data={data}
-                cx="50%"
-                cy="50%"
-                innerRadius={35}
-                outerRadius={55}
-                dataKey="value"
-                stroke="none"
-              >
-                {data.map((_, i) => (
-                  <Cell key={i} fill={PIE_COLORS[i % PIE_COLORS.length]} />
-                ))}
-              </Pie>
-            </PieChart>
-          </ResponsiveContainer>
+    <div
+      className={`bg-white rounded-xl shadow-sm p-4 ${
+        upcoming
+          ? "border border-dashed border-neutral-300"
+          : "border border-neutral-200/60"
+      }`}
+    >
+      <div className="flex items-start justify-between gap-2">
+        <div className="min-w-0">
+          <p className="font-semibold text-sm text-neutral-900">{name}</p>
+          {company && (
+            <p className="text-xs text-neutral-500 mt-0.5">{company}</p>
+          )}
+          {note && (
+            <p className="text-[10px] text-neutral-400 mt-0.5">{note}</p>
+          )}
         </div>
-        <div className="space-y-2 text-sm">
-          {data.map((d, i) => (
-            <div key={d.name} className="flex items-center gap-2">
-              <span
-                className="w-2.5 h-2.5 rounded-full flex-shrink-0"
-                style={{
-                  backgroundColor: PIE_COLORS[i % PIE_COLORS.length],
-                }}
-              />
-              <span className="text-neutral-600">{d.name}</span>
-              <span className="font-semibold text-neutral-900 ml-auto">
-                {d.value}%
-              </span>
-            </div>
-          ))}
-        </div>
+        {filmed && (
+          <span className="text-[9px] font-semibold uppercase tracking-wider px-1.5 py-0.5 rounded-full bg-neutral-900 text-white flex-shrink-0">
+            Filmed
+          </span>
+        )}
       </div>
     </div>
   );
@@ -266,23 +271,22 @@ export default function MediaKit() {
         <div className="max-w-3xl mb-14">
           <div className="flex items-center gap-3 mb-4">
             <p className="text-xs font-semibold tracking-[0.2em] uppercase text-neutral-400">
-              Cross-Platform Podcast Analytics
+              Partnership Deck
             </p>
             <span className="text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full bg-neutral-900 text-white">
               Last 6 Months
             </span>
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] mb-5">
-            Building the #1 podcast
+            The podcast for founders
             <br />
-            for founders &amp;&nbsp;operators
+            &amp;&nbsp;operators
           </h1>
           <p className="text-lg text-neutral-500 leading-relaxed max-w-2xl">
-            Open Residency is a long-form interview podcast featuring
-            world-class entrepreneurs, creators, and thought leaders. In the
-            last 6 months alone, we&apos;ve generated over 1.8 million views
-            across YouTube and all major podcast platforms with explosive
-            month-over-month growth.
+            Open Residency is the long-form podcast for founders, operators, and
+            brand builders. In 6 months, we&apos;ve generated 1.8M+ views
+            across YouTube and all podcast platforms with 472% stream
+            growth&nbsp;&mdash; and we&apos;re just getting started.
           </p>
           <div className="flex flex-wrap gap-3 mt-6">
             <a href="https://www.openresidency.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-neutral-900 text-white text-sm font-medium hover:bg-neutral-800 transition-colors">
@@ -304,7 +308,7 @@ export default function MediaKit() {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <StatCard
             value="1.8M+"
             label="Cross-Platform Views"
@@ -316,14 +320,9 @@ export default function MediaKit() {
             sub="Thumbnail impressions served"
           />
           <StatCard
-            value="255K+"
-            label="Watch Hours"
-            sub="YouTube (last 6 months)"
-          />
-          <StatCard
-            value="27,457"
-            label="YouTube Subscribers"
-            sub="Gained in last 6 months"
+            value="472%"
+            label="Stream Growth"
+            sub="Spotify streams Aug '25 → Jan '26"
           />
         </div>
       </section>
@@ -333,40 +332,170 @@ export default function MediaKit() {
         <hr className="border-neutral-200" />
       </div>
 
-      {/* ── YOUTUBE PERFORMANCE ─────────────────────────────────────── */}
+      {/* ── ABOUT THE SHOW ────────────────────────────────────────── */}
+      <section className="max-w-6xl mx-auto px-6 py-16">
+        <SectionHeader title="About The Show" />
+
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-10">
+          <div className="lg:col-span-3 space-y-5">
+            <p className="text-neutral-600 leading-relaxed">
+              Open Residency is built on a simple belief: nothing accelerates
+              growth like connecting with smart people who&apos;ve figured
+              something out you haven&apos;t.
+            </p>
+            <p className="text-neutral-600 leading-relaxed">
+              Hosted by Mark Brazil&nbsp;&mdash; operator, investor, and
+              creator&nbsp;&mdash; the show is an extension of how he&apos;s
+              built his career: by learning from the best and putting it into
+              practice. Mark is the CEO and co-founder of{" "}
+              <span className="font-semibold text-neutral-900">IKONICK</span>,
+              an 8-figure art licensing brand backed by GaryVee, Scooter Braun,
+              and others, holding 50+ licenses including Michael Jordan, Muhammad
+              Ali, Tiger Woods, Monopoly, and Peanuts. Previously, he served as
+              CMO and Partner at{" "}
+              <span className="font-semibold text-neutral-900">Melin</span>,
+              helping scale the premium headwear brand to 9 figures.
+            </p>
+            <p className="text-neutral-600 leading-relaxed">
+              Now, after nearly a decade of building, Mark is sitting down with
+              the operators, marketers, creators, and specialists he wants to
+              learn from&nbsp;&mdash; diving deep into the tactical stuff. Not
+              just what they&apos;ve built and why, but exactly how they&apos;ve
+              done it.
+            </p>
+            <p className="text-neutral-600 leading-relaxed">
+              Open Residency is produced and owned by Mark&apos;s internal
+              creative agency&nbsp;&mdash; the same team behind projects for{" "}
+              <span className="font-semibold text-neutral-900">
+                Leo Messi, Adidas, Nike, and MLB
+              </span>
+              . This show is their sole focus.
+            </p>
+            <div className="pt-2">
+              <p className="text-neutral-900 font-semibold leading-relaxed">
+                A partnership with Open Residency is not just media
+                placement&nbsp;&mdash; it&apos;s a relationship with Mark and
+                his network as a business development and sales machine.
+              </p>
+            </div>
+          </div>
+
+          <div className="lg:col-span-2 space-y-4">
+            <div className="bg-white rounded-2xl border border-neutral-200/60 shadow-sm p-6">
+              <p className="text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-2">
+                IKONICK
+              </p>
+              <p className="text-sm text-neutral-600 leading-relaxed">
+                8-figure art licensing brand. 50+ licenses including Jordan,
+                Ali, Tiger Woods, Monopoly &amp; Peanuts. Backed by GaryVee
+                &amp; Scooter Braun.
+              </p>
+            </div>
+            <div className="bg-white rounded-2xl border border-neutral-200/60 shadow-sm p-6">
+              <p className="text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-2">
+                Melin
+              </p>
+              <p className="text-sm text-neutral-600 leading-relaxed">
+                Former CMO &amp; Partner. Helped scale premium headwear brand to
+                9 figures.
+              </p>
+            </div>
+            <div className="bg-white rounded-2xl border border-neutral-200/60 shadow-sm p-6">
+              <p className="text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-2">
+                Production
+              </p>
+              <p className="text-sm text-neutral-600 leading-relaxed">
+                Internal creative agency. Previous work with Leo Messi, Adidas,
+                Nike &amp; MLB.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── DIVIDER ─────────────────────────────────────────────────── */}
+      <div className="max-w-6xl mx-auto px-6">
+        <hr className="border-neutral-200" />
+      </div>
+
+      {/* ── SOCIAL PROOF / PARTNERS ───────────────────────────────── */}
       <section className="max-w-6xl mx-auto px-6 py-16">
         <SectionHeader
-          title="YouTube Performance"
-          subtitle="Channel analytics — Last 6 months (Aug '25 – Feb '26)"
+          title="Our Partners"
+          subtitle="Brands that trust Open Residency"
         />
 
-        {/* Key stats grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4 mb-8">
+        <div className="flex flex-wrap justify-center gap-6 mb-10">
           {[
-            { v: "1.37M", l: "Total Views" },
-            { v: "1.21M", l: "Engaged Views" },
-            { v: "255.5K", l: "Watch Hours" },
-            { v: "15.2M", l: "Impressions" },
-            { v: "4.1%", l: "Click-Through Rate" },
-            { v: "27,457", l: "Subscribers Gained" },
-            { v: "406K", l: "Premium Views" },
-            { v: "58.7%", l: "Stay-to-Watch Rate" },
-          ].map((s) => (
+            { name: "COMCAST", category: "Universal Ads / CTV" },
+            { name: "BEEHIIV", category: "Email" },
+            { name: "K&L GATES", category: "Legal" },
+          ].map((p) => (
             <div
-              key={s.l}
-              className="bg-white rounded-xl border border-neutral-200/60 shadow-sm p-4"
+              key={p.name}
+              className="bg-white rounded-2xl border border-neutral-200/60 shadow-sm px-10 py-6 flex flex-col items-center justify-center min-w-[180px]"
             >
-              <p className="text-lg md:text-xl font-bold">{s.v}</p>
-              <p className="text-[11px] text-neutral-400 mt-0.5 leading-tight">{s.l}</p>
+              <span className="text-lg font-bold tracking-tight text-neutral-700">
+                {p.name}
+              </span>
+              <span className="text-[10px] text-neutral-400 mt-1">
+                {p.category}
+              </span>
             </div>
           ))}
         </div>
 
-        {/* Monthly views chart + top videos */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+        <div className="max-w-2xl mx-auto text-center">
+          <blockquote className="text-neutral-600 italic leading-relaxed">
+            &ldquo;He mentioned my name in passing on an episode and I got 4
+            inbound calls and 2 blue chip clients.&rdquo;
+          </blockquote>
+          <p className="text-sm font-semibold text-neutral-900 mt-3">
+            Tyler Denk
+          </p>
+          <p className="text-xs text-neutral-400">CEO, Beehiiv</p>
+        </div>
+      </section>
+
+      {/* ── DIVIDER ─────────────────────────────────────────────────── */}
+      <div className="max-w-6xl mx-auto px-6">
+        <hr className="border-neutral-200" />
+      </div>
+
+      {/* ── BY THE NUMBERS ────────────────────────────────────────── */}
+      <section className="max-w-6xl mx-auto px-6 py-16">
+        <SectionHeader
+          title="By The Numbers"
+          subtitle="Cross-platform performance — Last 6 months (Aug '25 – Jan '26)"
+        />
+
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+          <StatCard
+            value="255K+"
+            label="Watch Hours"
+            sub="YouTube (last 6 months)"
+          />
+          <StatCard
+            value="290K"
+            label="Peak Month Views"
+            sub="October 2025"
+          />
+          <StatCard
+            value="8x"
+            label="Follower Growth"
+            sub="Spotify: 669 → 5,371"
+          />
+          <StatCard
+            value="22"
+            label="Long-Form Episodes"
+            sub="+ 198 short-form clips"
+          />
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="lg:col-span-2 bg-white rounded-2xl border border-neutral-200/60 shadow-sm p-6">
             <h3 className="text-sm font-semibold text-neutral-500 uppercase tracking-wider mb-4">
-              Monthly Engaged Views
+              Monthly YouTube Views
             </h3>
             <div className="h-64">
               <ResponsiveContainer width="100%" height="100%">
@@ -387,138 +516,40 @@ export default function MediaKit() {
             </div>
           </div>
 
-          {/* Sidebar highlights */}
           <div className="space-y-4">
             <div className="bg-white rounded-2xl border border-neutral-200/60 shadow-sm p-6">
-              <p className="text-4xl font-bold">290K</p>
-              <p className="text-sm text-neutral-500 mt-1">
-                Peak month (Oct &apos;25)
-              </p>
-              <div className="flex items-center gap-1.5 mt-3 text-xs text-neutral-400">
-                <span className="inline-block w-1.5 h-1.5 rounded-full bg-neutral-900" />
-                Robert Greene episode drove viral spike
+              <h3 className="text-sm font-semibold text-neutral-500 uppercase tracking-wider mb-3">
+                Spotify Stream Trajectory
+              </h3>
+              <div className="flex flex-wrap items-center gap-2 text-sm font-medium text-neutral-600">
+                {MONTHLY_STREAMS.map((m, i) => (
+                  <span key={m.month} className="flex items-center gap-1.5">
+                    <span className="tabular-nums">{fmt(m.streams)}</span>
+                    {i < MONTHLY_STREAMS.length - 1 && (
+                      <span className="text-neutral-300">&rarr;</span>
+                    )}
+                  </span>
+                ))}
               </div>
-            </div>
-            <div className="bg-white rounded-2xl border border-neutral-200/60 shadow-sm p-6">
-              <p className="text-4xl font-bold">22</p>
-              <p className="text-sm text-neutral-500 mt-1">
-                Long-form episodes
-              </p>
-              <div className="flex items-center gap-1.5 mt-3 text-xs text-neutral-400">
-                <span className="inline-block w-1.5 h-1.5 rounded-full bg-neutral-900" />
-                + 198 short-form clips
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Shorts + Engagement */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="bg-white rounded-2xl border border-neutral-200/60 shadow-sm p-6">
-            <h3 className="text-sm font-semibold text-neutral-500 uppercase tracking-wider mb-4">
-              Shorts (198 clips)
-            </h3>
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <p className="text-2xl font-bold">413K</p>
-                <p className="text-xs text-neutral-400">Total Views</p>
-              </div>
-              <div>
-                <p className="text-2xl font-bold">11K</p>
-                <p className="text-xs text-neutral-400">Total Likes</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-white rounded-2xl border border-neutral-200/60 shadow-sm p-6">
-            <h3 className="text-sm font-semibold text-neutral-500 uppercase tracking-wider mb-4">
-              Engagement (All YouTube Content)
-            </h3>
-            <div className="grid grid-cols-3 gap-4">
-              <div>
-                <p className="text-2xl font-bold">49.8K</p>
-                <p className="text-xs text-neutral-400">Total Likes</p>
-              </div>
-              <div>
-                <p className="text-2xl font-bold">3.3K</p>
-                <p className="text-xs text-neutral-400">Comments</p>
-              </div>
-              <div>
-                <p className="text-2xl font-bold">14.8%</p>
-                <p className="text-xs text-neutral-400">Avg % Viewed</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── DIVIDER ─────────────────────────────────────────────────── */}
-      <div className="max-w-6xl mx-auto px-6">
-        <hr className="border-neutral-200" />
-      </div>
-
-      {/* ── PODCAST GROWTH (SPOTIFY) ────────────────────────────────── */}
-      <section className="max-w-6xl mx-auto px-6 py-16">
-        <SectionHeader
-          title="Podcast Growth"
-          subtitle="Spotify streams & downloads — Last 6 months (Aug '25 – Jan '26)"
-        />
-
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-2 bg-white rounded-2xl border border-neutral-200/60 shadow-sm p-6">
-            <div className="h-72">
-              <ResponsiveContainer width="100%" height="100%">
-                <AreaChart data={MONTHLY_STREAMS}>
-                  <defs>
-                    <linearGradient id="streamGrad" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor={ACCENT} stopOpacity={0.12} />
-                      <stop offset="100%" stopColor={ACCENT} stopOpacity={0.01} />
-                    </linearGradient>
-                  </defs>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#e5e5e5" vertical={false} />
-                  <XAxis dataKey="month" tick={{ fill: CHART_GRAY, fontSize: 12 }} axisLine={false} tickLine={false} />
-                  <YAxis tick={{ fill: CHART_GRAY, fontSize: 12 }} axisLine={false} tickLine={false} tickFormatter={(v) => fmt(v)} />
-                  <Tooltip content={<CustomTooltip />} />
-                  <Area type="monotone" dataKey="streams" stroke={CHART_BLACK} strokeWidth={2.5} fill="url(#streamGrad)" />
-                </AreaChart>
-              </ResponsiveContainer>
-            </div>
-          </div>
-
-          <div className="space-y-4">
-            <div className="bg-white rounded-2xl border border-neutral-200/60 shadow-sm p-6">
-              <p className="text-4xl font-bold">472%</p>
-              <p className="text-sm text-neutral-500 mt-1">Stream growth Aug → Jan</p>
-              <div className="flex items-center gap-1.5 mt-3 text-xs text-neutral-400">
-                <span className="inline-block w-1.5 h-1.5 rounded-full bg-neutral-900" />
-                6,917 → 39,586 monthly streams
+              <div className="flex items-center gap-2 mt-3">
+                <span className="text-[10px] font-bold tracking-wider uppercase px-2 py-0.5 rounded-full bg-neutral-900 text-white">
+                  472% growth
+                </span>
+                <span className="text-xs text-neutral-400">
+                  Aug &apos;25 &rarr; Jan &apos;26
+                </span>
               </div>
             </div>
 
             <div className="bg-white rounded-2xl border border-neutral-200/60 shadow-sm p-6">
               <p className="text-4xl font-bold">8x</p>
-              <p className="text-sm text-neutral-500 mt-1">Spotify follower growth</p>
+              <p className="text-sm text-neutral-500 mt-1">
+                Spotify follower growth
+              </p>
               <div className="flex items-center gap-1.5 mt-3 text-xs text-neutral-400">
                 <span className="inline-block w-1.5 h-1.5 rounded-full bg-neutral-900" />
-                669 → 5,371 followers
+                669 &rarr; 5,371 followers
               </div>
-            </div>
-
-            <div className="bg-white rounded-2xl border border-neutral-200/60 shadow-sm p-6">
-              <div className="h-28">
-                <ResponsiveContainer width="100%" height="100%">
-                  <AreaChart data={FOLLOWER_GROWTH}>
-                    <defs>
-                      <linearGradient id="followerGrad" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stopColor={ACCENT} stopOpacity={0.1} />
-                        <stop offset="100%" stopColor={ACCENT} stopOpacity={0} />
-                      </linearGradient>
-                    </defs>
-                    <Area type="monotone" dataKey="followers" stroke={CHART_BLACK} strokeWidth={2} fill="url(#followerGrad)" />
-                  </AreaChart>
-                </ResponsiveContainer>
-              </div>
-              <p className="text-xs text-neutral-400 mt-1">Spotify follower trajectory</p>
             </div>
           </div>
         </div>
@@ -529,18 +560,43 @@ export default function MediaKit() {
         <hr className="border-neutral-200" />
       </div>
 
-      {/* ── AUDIENCE DEMOGRAPHICS ───────────────────────────────────── */}
+      {/* ── CORE AUDIENCE ─────────────────────────────────────────── */}
       <section className="max-w-6xl mx-auto px-6 py-16">
         <SectionHeader
-          title="Audience Profile"
-          subtitle="Listener demographics across all podcast platforms — Last 6 months"
+          title="Core Audience"
+          subtitle="Who watches and listens to Open Residency"
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-white rounded-2xl border border-neutral-200/60 shadow-sm p-6">
-            <DonutChart data={GENDER_DATA} title="Gender" />
-          </div>
+        <p className="text-lg text-neutral-500 leading-relaxed max-w-3xl mb-10">
+          Our audience is overwhelmingly male (83%), ages 23&ndash;44 (86%),
+          and concentrated in English-speaking markets. They are founders,
+          operators, brand builders, and aspiring entrepreneurs&nbsp;&mdash; the
+          exact demographic that premium DTC, SaaS, and lifestyle brands want
+          to reach.
+        </p>
 
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+          {[
+            { v: "86%", l: "Ages 23–44", s: "Core buying demographic" },
+            { v: "83%", l: "Male", s: "Primary audience" },
+            { v: "65%", l: "English-Speaking", s: "US, UK, AU, CA combined" },
+          ].map((stat) => (
+            <div
+              key={stat.l}
+              className="bg-white rounded-2xl p-6 shadow-sm border border-neutral-200/60 text-center"
+            >
+              <p className="text-4xl font-bold tracking-tight text-neutral-900">
+                {stat.v}
+              </p>
+              <p className="text-sm font-medium text-neutral-600 mt-1">
+                {stat.l}
+              </p>
+              <p className="text-xs text-neutral-400 mt-1">{stat.s}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="bg-white rounded-2xl border border-neutral-200/60 shadow-sm p-6">
             <h3 className="text-sm font-semibold text-neutral-500 uppercase tracking-wider mb-4">
               Age Distribution
@@ -555,9 +611,6 @@ export default function MediaKit() {
                 </BarChart>
               </ResponsiveContainer>
             </div>
-            <p className="text-xs text-neutral-400 mt-2 text-center">
-              <span className="font-semibold text-neutral-600">86.3%</span> core demographic (ages 23–44)
-            </p>
           </div>
 
           <div className="bg-white rounded-2xl border border-neutral-200/60 shadow-sm p-6">
@@ -569,10 +622,18 @@ export default function MediaKit() {
                 <div key={g.country}>
                   <div className="flex items-baseline justify-between text-sm mb-1">
                     <span className="text-neutral-600">{g.country}</span>
-                    <span className="font-semibold tabular-nums">{g.value}%</span>
+                    <span className="font-semibold tabular-nums">
+                      {g.value}%
+                    </span>
                   </div>
                   <div className="w-full bg-neutral-100 rounded-full h-1.5">
-                    <div className="h-1.5 rounded-full" style={{ width: `${(g.value / 35.4) * 100}%`, backgroundColor: GEO_BAR }} />
+                    <div
+                      className="h-1.5 rounded-full"
+                      style={{
+                        width: `${(g.value / 35.4) * 100}%`,
+                        backgroundColor: GEO_BAR,
+                      }}
+                    />
                   </div>
                 </div>
               ))}
@@ -586,20 +647,42 @@ export default function MediaKit() {
         <hr className="border-neutral-200" />
       </div>
 
-      {/* ── PLATFORM & DEVICE BREAKDOWN ─────────────────────────────── */}
+      {/* ── GUEST ROSTER ──────────────────────────────────────────── */}
       <section className="max-w-6xl mx-auto px-6 py-16">
         <SectionHeader
-          title="Platform & Device Breakdown"
-          subtitle="Where and how listeners consume Open Residency"
+          title="Guest Roster"
+          subtitle="Founders, operators, and creators who have been on the show"
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="bg-white rounded-2xl border border-neutral-200/60 shadow-sm p-6">
-            <DonutChart data={PLATFORM_DATA} title="Podcast Apps" />
-          </div>
-          <div className="bg-white rounded-2xl border border-neutral-200/60 shadow-sm p-6">
-            <DonutChart data={DEVICE_DATA} title="Devices" />
-          </div>
+        <p className="text-sm text-neutral-500 mb-4">
+          {PUBLISHED_GUESTS.length} published episodes
+        </p>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 mb-12">
+          {PUBLISHED_GUESTS.map((g) => (
+            <GuestCard
+              key={g.name}
+              name={g.name}
+              company={g.company}
+              note={g.note}
+            />
+          ))}
+        </div>
+
+        <h3 className="text-xl font-bold mb-2">Coming Soon</h3>
+        <p className="text-sm text-neutral-500 mb-4">
+          {UPCOMING_GUESTS.length}+ confirmed guests in pipeline
+        </p>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+          {UPCOMING_GUESTS.map((g) => (
+            <GuestCard
+              key={g.name}
+              name={g.name}
+              company={g.company || undefined}
+              note={g.note || undefined}
+              filmed={g.filmed}
+              upcoming
+            />
+          ))}
         </div>
       </section>
 
@@ -614,7 +697,7 @@ export default function MediaKit() {
             className="h-4 w-auto opacity-40"
           />
           <p className="text-xs text-neutral-400 text-center md:text-right">
-            Last updated February 12, 2026 &middot; Instagram analytics coming soon
+            Last updated February 2026
           </p>
         </div>
       </footer>
