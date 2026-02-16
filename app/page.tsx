@@ -70,17 +70,17 @@ const PUBLISHED_GUESTS = [
   { name: "Nick Shackelford", company: "Brez / Structured", note: "8 figures" },
   { name: "Simon Molnar", company: "Flagship.ai", note: "Family founded Afterpay" },
   { name: "Sahil Bloom", company: "Creator", note: "NYT Best Seller" },
+  { name: "Mark Manson", company: "Author", note: "NYT Best Seller" },
   { name: "Dan Koe", company: "Creator", note: "Live Episode" },
+  { name: "Samir", company: "Colin and Samir", note: "Live Episode" },
+  { name: "Kane Kallaway", company: "Creator", note: "Live Episode" },
   { name: "Caleb Ralston", company: "Creator", note: "Hormozi / Vayner" },
   { name: "Oren John", company: "Creator", note: "Internet's Creative Director" },
   { name: "RPN", company: "Creator", note: "" },
 ];
 
 const UPCOMING_GUESTS = [
-  { name: "Mark Manson", company: "Author", note: "NYT Best Seller", filmed: true },
-  { name: "Kane Kallaway", company: "Creator", note: "", filmed: true },
-  { name: "Samir", company: "Colin and Samir", note: "Creator", filmed: true },
-  { name: "Taylor Holiday", company: "Common Thread Collective", note: "8 figures", filmed: false },
+  { name: "Taylor Holiday", company: "Common Thread Collective", note: "8 figures", filmed: true },
   { name: "Daniel Arsham", company: "Artist / Creator", note: "", filmed: false },
   { name: "Paddy Gallaway", company: "YouTube Strategist", note: "", filmed: false },
   { name: "Hormozi", company: "Acquisition.com", note: "", filmed: false },
@@ -336,79 +336,46 @@ export default function MediaKit() {
       <section className="max-w-6xl mx-auto px-6 py-16">
         <SectionHeader title="About The Show" />
 
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-10">
-          <div className="lg:col-span-3 space-y-5">
-            <p className="text-neutral-600 leading-relaxed">
-              Open Residency is built on a simple belief: nothing accelerates
-              growth like connecting with smart people who&apos;ve figured
-              something out you haven&apos;t.
+        <div className="max-w-3xl space-y-5">
+          <p className="text-neutral-600 leading-relaxed">
+            Open Residency is built on a simple belief: nothing accelerates
+            growth like connecting with smart people who&apos;ve figured
+            something out you haven&apos;t.
+          </p>
+          <p className="text-neutral-600 leading-relaxed">
+            Hosted by Mark Brazil&nbsp;&mdash; operator, investor, and
+            creator&nbsp;&mdash; the show is an extension of how he&apos;s
+            built his career: by learning from the best and putting it into
+            practice. Mark is the CEO and co-founder of{" "}
+            <span className="font-semibold text-neutral-900">IKONICK</span>,
+            an 8-figure art licensing brand backed by GaryVee, Scooter Braun,
+            and others, holding 50+ licenses including Michael Jordan, Muhammad
+            Ali, Tiger Woods, Monopoly, and Peanuts. Previously, he served as
+            CMO and Partner at{" "}
+            <span className="font-semibold text-neutral-900">Melin</span>,
+            helping scale the premium headwear brand to 9 figures.
+          </p>
+          <p className="text-neutral-600 leading-relaxed">
+            Now, after nearly a decade of building, Mark is sitting down with
+            the operators, marketers, creators, and specialists he wants to
+            learn from&nbsp;&mdash; diving deep into the tactical stuff. Not
+            just what they&apos;ve built and why, but exactly how they&apos;ve
+            done it.
+          </p>
+          <p className="text-neutral-600 leading-relaxed">
+            Open Residency is produced and owned by Mark&apos;s internal
+            creative agency&nbsp;&mdash; the same team behind projects for{" "}
+            <span className="font-semibold text-neutral-900">
+              Leo Messi, Adidas, Nike, and MLB
+            </span>
+            . This show is their sole focus.
+          </p>
+          <div className="pt-2">
+            <p className="text-neutral-900 font-semibold leading-relaxed">
+              A partnership with Open Residency is not just media
+              placement&nbsp;&mdash; it&apos;s a relationship with Mark and
+              his network as a business development and sales machine.
             </p>
-            <p className="text-neutral-600 leading-relaxed">
-              Hosted by Mark Brazil&nbsp;&mdash; operator, investor, and
-              creator&nbsp;&mdash; the show is an extension of how he&apos;s
-              built his career: by learning from the best and putting it into
-              practice. Mark is the CEO and co-founder of{" "}
-              <span className="font-semibold text-neutral-900">IKONICK</span>,
-              an 8-figure art licensing brand backed by GaryVee, Scooter Braun,
-              and others, holding 50+ licenses including Michael Jordan, Muhammad
-              Ali, Tiger Woods, Monopoly, and Peanuts. Previously, he served as
-              CMO and Partner at{" "}
-              <span className="font-semibold text-neutral-900">Melin</span>,
-              helping scale the premium headwear brand to 9 figures.
-            </p>
-            <p className="text-neutral-600 leading-relaxed">
-              Now, after nearly a decade of building, Mark is sitting down with
-              the operators, marketers, creators, and specialists he wants to
-              learn from&nbsp;&mdash; diving deep into the tactical stuff. Not
-              just what they&apos;ve built and why, but exactly how they&apos;ve
-              done it.
-            </p>
-            <p className="text-neutral-600 leading-relaxed">
-              Open Residency is produced and owned by Mark&apos;s internal
-              creative agency&nbsp;&mdash; the same team behind projects for{" "}
-              <span className="font-semibold text-neutral-900">
-                Leo Messi, Adidas, Nike, and MLB
-              </span>
-              . This show is their sole focus.
-            </p>
-            <div className="pt-2">
-              <p className="text-neutral-900 font-semibold leading-relaxed">
-                A partnership with Open Residency is not just media
-                placement&nbsp;&mdash; it&apos;s a relationship with Mark and
-                his network as a business development and sales machine.
-              </p>
-            </div>
-          </div>
-
-          <div className="lg:col-span-2 space-y-4">
-            <div className="bg-white rounded-2xl border border-neutral-200/60 shadow-sm p-6">
-              <p className="text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-2">
-                IKONICK
-              </p>
-              <p className="text-sm text-neutral-600 leading-relaxed">
-                8-figure art licensing brand. 50+ licenses including Jordan,
-                Ali, Tiger Woods, Monopoly &amp; Peanuts. Backed by GaryVee
-                &amp; Scooter Braun.
-              </p>
-            </div>
-            <div className="bg-white rounded-2xl border border-neutral-200/60 shadow-sm p-6">
-              <p className="text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-2">
-                Melin
-              </p>
-              <p className="text-sm text-neutral-600 leading-relaxed">
-                Former CMO &amp; Partner. Helped scale premium headwear brand to
-                9 figures.
-              </p>
-            </div>
-            <div className="bg-white rounded-2xl border border-neutral-200/60 shadow-sm p-6">
-              <p className="text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-2">
-                Production
-              </p>
-              <p className="text-sm text-neutral-600 leading-relaxed">
-                Internal creative agency. Previous work with Leo Messi, Adidas,
-                Nike &amp; MLB.
-              </p>
-            </div>
           </div>
         </div>
       </section>
@@ -425,32 +392,34 @@ export default function MediaKit() {
           subtitle="Brands that trust Open Residency"
         />
 
-        <div className="flex flex-wrap justify-center gap-6 mb-10">
-          {[
-            { name: "COMCAST", category: "Universal Ads / CTV" },
-            { name: "BEEHIIV", category: "Email" },
-            { name: "K&L GATES", category: "Legal" },
-          ].map((p) => (
-            <div
-              key={p.name}
-              className="bg-white rounded-2xl border border-neutral-200/60 shadow-sm px-10 py-6 flex flex-col items-center justify-center min-w-[180px]"
-            >
-              <span className="text-lg font-bold tracking-tight text-neutral-700">
-                {p.name}
-              </span>
-              <span className="text-[10px] text-neutral-400 mt-1">
-                {p.category}
-              </span>
-            </div>
-          ))}
+        <div className="bg-white rounded-2xl border border-neutral-200/60 shadow-sm p-8 md:p-10 mb-10">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 items-center">
+            {[
+              { name: "COMCAST", category: "CTV" },
+              { name: "BEEHIIV", category: "Email" },
+              { name: "K&L GATES", category: "Legal" },
+              { name: "POPPY.AI", category: "AI" },
+              { name: "MANYCHAT", category: "Messaging" },
+              { name: "LINDY", category: "AI" },
+            ].map((p) => (
+              <div key={p.name} className="flex flex-col items-center justify-center py-3">
+                <span className="text-base font-bold tracking-tight text-neutral-800">
+                  {p.name}
+                </span>
+                <span className="text-[10px] text-neutral-400 mt-0.5 uppercase tracking-wider">
+                  {p.category}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
 
         <div className="max-w-2xl mx-auto text-center">
-          <blockquote className="text-neutral-600 italic leading-relaxed">
+          <blockquote className="text-neutral-600 italic leading-relaxed text-lg">
             &ldquo;He mentioned my name in passing on an episode and I got 4
             inbound calls and 2 blue chip clients.&rdquo;
           </blockquote>
-          <p className="text-sm font-semibold text-neutral-900 mt-3">
+          <p className="text-sm font-semibold text-neutral-900 mt-4">
             Tyler Denk
           </p>
           <p className="text-xs text-neutral-400">CEO, Beehiiv</p>
