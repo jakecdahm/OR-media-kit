@@ -385,52 +385,6 @@ export default function MediaKit() {
         <hr className="border-neutral-200" />
       </div>
 
-      {/* ── SOCIAL PROOF / PARTNERS ───────────────────────────────── */}
-      <section className="max-w-6xl mx-auto px-6 py-16">
-        <SectionHeader
-          title="Our Partners"
-          subtitle="Brands that trust Open Residency"
-        />
-
-        <div className="bg-white rounded-2xl border border-neutral-200/60 shadow-sm p-8 md:p-10 mb-10">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 items-center">
-            {[
-              { name: "COMCAST", category: "CTV" },
-              { name: "BEEHIIV", category: "Email" },
-              { name: "K&L GATES", category: "Legal" },
-              { name: "POPPY.AI", category: "AI" },
-              { name: "MANYCHAT", category: "Messaging" },
-              { name: "LINDY", category: "AI" },
-            ].map((p) => (
-              <div key={p.name} className="flex flex-col items-center justify-center py-3">
-                <span className="text-base font-bold tracking-tight text-neutral-800">
-                  {p.name}
-                </span>
-                <span className="text-[10px] text-neutral-400 mt-0.5 uppercase tracking-wider">
-                  {p.category}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="max-w-2xl mx-auto text-center">
-          <blockquote className="text-neutral-600 italic leading-relaxed text-lg">
-            &ldquo;He mentioned my name in passing on an episode and I got 4
-            inbound calls and 2 blue chip clients.&rdquo;
-          </blockquote>
-          <p className="text-sm font-semibold text-neutral-900 mt-4">
-            Tyler Denk
-          </p>
-          <p className="text-xs text-neutral-400">CEO, Beehiiv</p>
-        </div>
-      </section>
-
-      {/* ── DIVIDER ─────────────────────────────────────────────────── */}
-      <div className="max-w-6xl mx-auto px-6">
-        <hr className="border-neutral-200" />
-      </div>
-
       {/* ── BY THE NUMBERS ────────────────────────────────────────── */}
       <section className="max-w-6xl mx-auto px-6 py-16">
         <SectionHeader
@@ -652,6 +606,52 @@ export default function MediaKit() {
               upcoming
             />
           ))}
+        </div>
+      </section>
+
+      {/* ── DIVIDER ─────────────────────────────────────────────────── */}
+      <div className="max-w-6xl mx-auto px-6">
+        <hr className="border-neutral-200" />
+      </div>
+
+      {/* ── SOCIAL PROOF / PARTNERS ───────────────────────────────── */}
+      <section className="max-w-6xl mx-auto px-6 py-16">
+        <SectionHeader
+          title="Our Partners"
+          subtitle="Brands that trust Open Residency"
+        />
+
+        <div className="bg-white rounded-2xl border border-neutral-200/60 shadow-sm p-8 md:p-10 mb-10">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 items-center">
+            {[
+              { name: "COMCAST", category: "CTV" },
+              { name: "BEEHIIV", category: "Email" },
+              { name: "K&L GATES", category: "Legal" },
+              { name: "POPPY.AI", category: "AI" },
+              { name: "MANYCHAT", category: "Messaging" },
+              { name: "LINDY", category: "AI" },
+            ].map((p) => (
+              <div key={p.name} className="flex flex-col items-center justify-center py-3">
+                <span className="text-base font-bold tracking-tight text-neutral-800">
+                  {p.name}
+                </span>
+                <span className="text-[10px] text-neutral-400 mt-0.5 uppercase tracking-wider">
+                  {p.category}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="max-w-2xl mx-auto text-center">
+          <blockquote className="text-neutral-600 italic leading-relaxed text-lg">
+            &ldquo;He mentioned my name in passing on an episode and I got 4
+            inbound calls and 2 blue chip clients.&rdquo;
+          </blockquote>
+          <p className="text-sm font-semibold text-neutral-900 mt-4">
+            Tyler Denk
+          </p>
+          <p className="text-xs text-neutral-400">CEO, Beehiiv</p>
         </div>
       </section>
 
