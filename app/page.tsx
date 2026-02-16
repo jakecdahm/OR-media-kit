@@ -55,28 +55,28 @@ const GEO_DATA = [
 ];
 
 const PUBLISHED_GUESTS = [
-  { name: "Robert Greene", company: "Author", note: "48 Laws of Power" },
-  { name: "Dee Murthy", company: "GHST", note: "9 figures" },
-  { name: "Bill Shufelt", company: "Athletic Brewing", note: "9 figures" },
-  { name: "Nate Checketts", company: "Rhone", note: "9 figures" },
-  { name: "Ryan Bartlett", company: "True Classic", note: "9 figures" },
-  { name: "Bryan Garafalow", company: "Skullcandy", note: "9 figures" },
-  { name: "Sean Frank", company: "Ridge", note: "9 figures" },
-  { name: "George Heaton", company: "Represent", note: "9 figures" },
-  { name: "Kent Yoshimura", company: "NeuroGum", note: "9 figures" },
-  { name: "Joel Kocher", company: "Humann", note: "9 figures" },
-  { name: "Oliver Zak", company: "Mad Rabbit", note: "8 figures" },
-  { name: "Manny Lubin", company: "Slate Milk", note: "8 figures" },
-  { name: "Nick Shackelford", company: "Brez / Structured", note: "8 figures" },
-  { name: "Simon Molnar", company: "Flagship.ai", note: "Family founded Afterpay" },
-  { name: "Sahil Bloom", company: "Creator", note: "NYT Best Seller" },
-  { name: "Mark Manson", company: "Author", note: "NYT Best Seller" },
-  { name: "Dan Koe", company: "Creator", note: "Live Episode" },
-  { name: "Samir", company: "Colin and Samir", note: "Live Episode" },
-  { name: "Kane Kallaway", company: "Creator", note: "Live Episode" },
-  { name: "Caleb Ralston", company: "Creator", note: "Hormozi / Vayner" },
-  { name: "Oren John", company: "Creator", note: "Internet's Creative Director" },
-  { name: "RPN", company: "Creator", note: "" },
+  { name: "Robert Greene", company: "Author", note: "48 Laws of Power", url: "https://www.youtube.com/watch?v=-1aSoZ1ffTg" },
+  { name: "Dee Murthy", company: "GHST", note: "9 figures", url: "https://www.youtube.com/@openresidency" },
+  { name: "Bill Shufelt", company: "Athletic Brewing", note: "9 figures", url: "https://www.youtube.com/watch?v=tA9Auu8glpE" },
+  { name: "Nate Checketts", company: "Rhone", note: "9 figures", url: "https://www.youtube.com/watch?v=FoTVLPQna2Y" },
+  { name: "Ryan Bartlett", company: "True Classic", note: "9 figures", url: "https://www.youtube.com/watch?v=l6BpG8ff3Qc" },
+  { name: "Bryan Garafalow", company: "Skullcandy", note: "9 figures", url: "https://www.youtube.com/watch?v=yhNcUzoHB_4" },
+  { name: "Sean Frank", company: "Ridge", note: "9 figures", url: "https://www.youtube.com/watch?v=2eGds8kLszE" },
+  { name: "George Heaton", company: "Represent", note: "9 figures", url: "https://www.youtube.com/watch?v=6tTLUuD06AY" },
+  { name: "Kent Yoshimura", company: "NeuroGum", note: "9 figures", url: "https://www.youtube.com/watch?v=ccGFIAfyNyg" },
+  { name: "Joel Kocher", company: "Humann", note: "9 figures", url: "https://www.youtube.com/watch?v=UtsHkR7TFvo" },
+  { name: "Oliver Zak", company: "Mad Rabbit", note: "8 figures", url: "https://www.youtube.com/watch?v=mbsjQncrqzw" },
+  { name: "Manny Lubin", company: "Slate Milk", note: "8 figures", url: "https://www.youtube.com/watch?v=MzX-PxocoPw" },
+  { name: "Nick Shackelford", company: "Brez / Structured", note: "8 figures", url: "https://www.youtube.com/watch?v=mdqvLXm48aE" },
+  { name: "Simon Molnar", company: "Flagship.ai", note: "Family founded Afterpay", url: "https://www.youtube.com/@openresidency" },
+  { name: "Sahil Bloom", company: "Creator", note: "NYT Best Seller", url: "https://www.youtube.com/watch?v=9yjGTflQDbg" },
+  { name: "Mark Manson", company: "Author", note: "NYT Best Seller", url: "https://www.youtube.com/watch?v=sgpmGr1e3iI" },
+  { name: "Dan Koe", company: "Creator", note: "Live Episode", url: "https://www.youtube.com/watch?v=EVDQ1MijHbk" },
+  { name: "Samir", company: "Colin and Samir", note: "Live Episode", url: "https://www.youtube.com/watch?v=Yl_HLGoWWJE" },
+  { name: "Kane Kallaway", company: "Creator", note: "Live Episode", url: "https://www.youtube.com/watch?v=VcqQmrGqthg" },
+  { name: "Caleb Ralston", company: "Creator", note: "Hormozi / Vayner", url: "https://www.youtube.com/watch?v=g8i0FYcJEAE" },
+  { name: "Oren John", company: "Creator", note: "Internet's Creative Director", url: "https://www.youtube.com/watch?v=uI5Qo58FqiE" },
+  { name: "RPN", company: "Creator", note: "", url: "https://www.youtube.com/watch?v=b-fTeo4a9N8" },
 ];
 
 const UPCOMING_GUESTS = [
@@ -195,39 +195,49 @@ function GuestCard({
   note,
   filmed,
   upcoming,
+  url,
 }: {
   name: string;
   company?: string;
   note?: string;
   filmed?: boolean;
   upcoming?: boolean;
+  url?: string;
 }) {
-  return (
-    <div
-      className={`bg-white rounded-xl shadow-sm p-4 ${
-        upcoming
-          ? "border border-dashed border-neutral-300"
-          : "border border-neutral-200/60"
-      }`}
-    >
-      <div className="flex items-start justify-between gap-2">
-        <div className="min-w-0">
-          <p className="font-semibold text-sm text-neutral-900">{name}</p>
-          {company && (
-            <p className="text-xs text-neutral-500 mt-0.5">{company}</p>
-          )}
-          {note && (
-            <p className="text-[10px] text-neutral-400 mt-0.5">{note}</p>
-          )}
-        </div>
-        {filmed && (
-          <span className="text-[9px] font-semibold uppercase tracking-wider px-1.5 py-0.5 rounded-full bg-neutral-900 text-white flex-shrink-0">
-            Filmed
-          </span>
+  const content = (
+    <div className="flex items-start justify-between gap-2">
+      <div className="min-w-0">
+        <p className="font-semibold text-sm text-neutral-900">{name}</p>
+        {company && (
+          <p className="text-xs text-neutral-500 mt-0.5">{company}</p>
+        )}
+        {note && (
+          <p className="text-[10px] text-neutral-400 mt-0.5">{note}</p>
         )}
       </div>
+      {filmed && (
+        <span className="text-[9px] font-semibold uppercase tracking-wider px-1.5 py-0.5 rounded-full bg-neutral-900 text-white flex-shrink-0">
+          Filmed
+        </span>
+      )}
     </div>
   );
+
+  const className = `bg-white rounded-xl shadow-sm p-4 block ${
+    upcoming
+      ? "border border-dashed border-neutral-300"
+      : "border border-neutral-200/60"
+  } ${url ? "hover:bg-neutral-50 transition-colors" : ""}`;
+
+  if (url) {
+    return (
+      <a href={url} target="_blank" rel="noopener noreferrer" className={className}>
+        {content}
+      </a>
+    );
+  }
+
+  return <div className={className}>{content}</div>;
 }
 
 /* ==========================================================================
@@ -336,7 +346,7 @@ export default function MediaKit() {
       <section className="max-w-6xl mx-auto px-6 py-16">
         <SectionHeader title="About The Show" />
 
-        <div className="max-w-3xl space-y-5">
+        <div className="space-y-5">
           <p className="text-neutral-600 leading-relaxed">
             Open Residency is built on a simple belief: nothing accelerates
             growth like connecting with smart people who&apos;ve figured
@@ -587,6 +597,7 @@ export default function MediaKit() {
               name={g.name}
               company={g.company}
               note={g.note}
+              url={g.url}
             />
           ))}
         </div>
