@@ -278,7 +278,7 @@ export default function MediaKit() {
 
       {/* ── HERO ────────────────────────────────────────────────────── */}
       <section className="max-w-6xl mx-auto px-6 pt-14 md:pt-20 pb-12">
-        <div className="max-w-3xl mb-14">
+        <div className="mb-14">
           <div className="flex items-center gap-3 mb-4">
             <p className="text-xs font-semibold tracking-[0.2em] uppercase text-neutral-400">
               Partnership Deck
@@ -292,7 +292,7 @@ export default function MediaKit() {
             <br />
             &amp;&nbsp;operators
           </h1>
-          <p className="text-lg text-neutral-500 leading-relaxed max-w-2xl">
+          <p className="text-lg text-neutral-500 leading-relaxed">
             Open Residency is the long-form podcast for founders, operators, and
             brand builders. In 6 months, we&apos;ve generated 1.8M+ views
             across YouTube and all podcast platforms with 472% stream
@@ -500,7 +500,7 @@ export default function MediaKit() {
           subtitle="Who watches and listens to Open Residency"
         />
 
-        <p className="text-lg text-neutral-500 leading-relaxed max-w-3xl mb-10">
+        <p className="text-lg text-neutral-500 leading-relaxed mb-10">
           Our audience is overwhelmingly male (83%), ages 23&ndash;44 (86%),
           and concentrated in English-speaking markets. They are founders,
           operators, brand builders, and aspiring entrepreneurs&nbsp;&mdash; the
@@ -512,7 +512,7 @@ export default function MediaKit() {
           {[
             { v: "86%", l: "Ages 23–44", s: "Core buying demographic" },
             { v: "83%", l: "Male", s: "Primary audience" },
-            { v: "65%", l: "English-Speaking", s: "US, UK, AU, CA combined" },
+            { v: "300K+", l: "Hours Consumed", s: "YouTube + Podcast Platforms" },
           ].map((stat) => (
             <div
               key={stat.l}
