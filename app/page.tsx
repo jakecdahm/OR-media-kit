@@ -91,7 +91,7 @@ const UPCOMING_GUESTS = [
   { name: "Marc Ecko", company: "Ecko", note: "", filmed: false },
   { name: "OMG Adrian", company: "Creator", note: "", filmed: false },
   { name: "Jeff Byers", company: "Momentous", note: "9 figures", filmed: false },
-  { name: "Megan Lightcap", company: "Slow Ventures", note: "Creator Fund", filmed: false },
+  { name: "Megan Lightcap", company: "Slow Ventures", note: "Creator Fund", filmed: true },
   { name: "Dan Martell", company: "SaaS Academy", note: "", filmed: false },
   { name: "Matt Gray", company: "Creator", note: "", filmed: false },
   { name: "Baseball Lifestyle", company: "", note: "9 figures", filmed: false },
@@ -100,6 +100,7 @@ const UPCOMING_GUESTS = [
   { name: "Chris Voss", company: "Author", note: "Never Split the Difference", filmed: false },
   { name: "Dad Gang", company: "", note: "8 figures", filmed: false },
   { name: "Bruno Casanovas", company: "Nude", note: "8 figures", filmed: false },
+  { name: "Danny Yeung", company: "IM8", note: "", filmed: true },
 ];
 
 /* ==========================================================================
@@ -341,6 +342,20 @@ export default function MediaKit() {
       <div className="max-w-6xl mx-auto px-6">
         <hr className="border-neutral-200" />
       </div>
+
+      {/* ── SIZZLE REEL ──────────────────────────────────────────── */}
+      <section className="max-w-6xl mx-auto px-6 pt-16 pb-0">
+        <div className="rounded-2xl overflow-hidden border border-neutral-200/60 shadow-sm">
+          <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
+            <iframe
+              src="https://player.vimeo.com/video/1165442164?h=03653a5f79&title=0&byline=0&portrait=0"
+              className="absolute inset-0 w-full h-full"
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+        </div>
+      </section>
 
       {/* ── ABOUT THE SHOW ────────────────────────────────────────── */}
       <section className="max-w-6xl mx-auto px-6 py-16">
