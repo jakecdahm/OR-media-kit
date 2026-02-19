@@ -698,7 +698,7 @@ export default function MediaKit() {
 
       {/* ── PHOTO GRID ──────────────────────────────────────────────── */}
       <section className="max-w-7xl mx-auto px-6 py-16">
-        <div className="columns-2 sm:columns-3 md:columns-4 gap-3 space-y-3">
+        <div className="columns-2 sm:columns-3 md:columns-4 gap-3">
           {[
             "5V2A5389", "L1006452", "5V2A3284", "L1005057", "5V2A0425",
             "L1006194", "5V2A3332", "L1005698", "5V2A4677", "L1006421",
@@ -717,13 +717,13 @@ export default function MediaKit() {
             "5V2A1637", "L1006800", "L1003871", "L1004838", "L1005053",
             "L1005704", "L1005839", "L1005910", "L1006491", "5V2A3469",
           ].map((name) => (
-            <Image
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
               key={name}
               src={`/photos/${name}.webp`}
               alt="Open Residency"
-              width={800}
-              height={600}
-              className="w-full rounded-lg"
+              className="w-full rounded-lg mb-3 break-inside-avoid"
+              loading="lazy"
             />
           ))}
         </div>
