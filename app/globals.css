@@ -24,3 +24,31 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #aaa;
 }
+
+/* Flex-based gallery preserving original aspect ratios */
+.gallery-grid {
+  --row-height: 220px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.gallery-grid::after {
+  content: "";
+  flex-grow: 999999;
+}
+.gallery-grid .gallery-item {
+  flex-grow: calc(var(--aspect) * 100);
+  flex-basis: calc(var(--row-height) * var(--aspect));
+  overflow: hidden;
+}
+.gallery-grid .gallery-item img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+@media (min-width: 640px) {
+  .gallery-grid { --row-height: 260px; gap: 5px; }
+}
+@media (min-width: 1024px) {
+  .gallery-grid { --row-height: 320px; gap: 6px; }
+}
