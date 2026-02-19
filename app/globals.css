@@ -32,10 +32,6 @@ body {
   flex-wrap: wrap;
   gap: 4px;
 }
-.gallery-grid::after {
-  content: "";
-  flex-grow: 999999;
-}
 .gallery-grid .gallery-item {
   flex-grow: calc(var(--aspect) * 100);
   flex-basis: calc(var(--row-height) * var(--aspect));

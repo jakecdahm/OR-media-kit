@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useState, useEffect, useCallback, useRef } from "react";
 import {
   AreaChart,
   Area,
@@ -259,11 +260,88 @@ function SizzleReel() {
   );
 }
 
+const PHOTOS = [
+  { n: "5V2A5389", a: 0.667 }, { n: "L1006452", a: 0.664 },
+  { n: "5V2A3284", a: 0.667 }, { n: "L1005057", a: 0.664 },
+  { n: "5V2A0425", a: 0.667 }, { n: "L1006194", a: 0.664 },
+  { n: "5V2A3332", a: 0.667 }, { n: "L1005698", a: 0.664 },
+  { n: "5V2A4677", a: 0.667 }, { n: "L1006421", a: 0.664 },
+  { n: "5V2A0518", a: 0.667 }, { n: "L1005006", a: 0.664 },
+  { n: "5V2A3450", a: 0.667 }, { n: "L1006147", a: 0.664 },
+  { n: "5V2A5426", a: 0.667 }, { n: "L1005623", a: 0.664 },
+  { n: "5V2A9274", a: 0.667 }, { n: "L1006382", a: 0.664 },
+  { n: "5V2A3392", a: 0.667 }, { n: "L1005814", a: 0.664 },
+  { n: "5V2A0462", a: 0.667 }, { n: "L1003913", a: 0.664 },
+  { n: "5V2A5591", a: 0.667 }, { n: "L1006742", a: 0.667 },
+  { n: "5V2A3444", a: 0.667 }, { n: "L1005855", a: 1.504 },
+  { n: "5V2A4785", a: 0.667 }, { n: "L1006463", a: 0.664 },
+  { n: "5V2A5467", a: 0.667 }, { n: "L1005919", a: 0.664 },
+  { n: "5V2A0503", a: 0.667 }, { n: "L1004870", a: 0.664 },
+  { n: "5V2A3335", a: 0.667 }, { n: "L1006357", a: 0.664 },
+  { n: "5V2A5457", a: 0.667 }, { n: "L1005734", a: 0.664 },
+  { n: "5V2A8799", a: 0.667 }, { n: "L1006450", a: 0.664 },
+  { n: "5V2A5521", a: 0.667 }, { n: "L1005821", a: 0.664 },
+  { n: "5V2A0522", a: 0.667 }, { n: "L1004895", a: 0.664 },
+  { n: "5V2A3534", a: 0.667 }, { n: "L1006377", a: 0.664 },
+  { n: "5V2A5492", a: 0.667 }, { n: "L1005766", a: 0.664 },
+  { n: "5V2A9351", a: 0.667 }, { n: "L1006467", a: 0.664 },
+  { n: "5V2A5586", a: 0.667 }, { n: "L1005908", a: 0.664 },
+  { n: "5V2A0597", a: 0.667 }, { n: "L1004914", a: 0.664 },
+  { n: "5V2A3246", a: 0.667 }, { n: "L1006221", a: 0.664 },
+  { n: "5V2A4561", a: 0.667 }, { n: "L1005630", a: 0.664 },
+  { n: "5V2A0325", a: 0.667 }, { n: "L1006715", a: 0.667 },
+  { n: "5V2A3422", a: 0.667 }, { n: "L1005827", a: 0.664 },
+  { n: "5V2A4590", a: 0.667 }, { n: "L1005617", a: 0.664 },
+  { n: "5V2A4800", a: 0.667 }, { n: "L1006774", a: 0.664 },
+  { n: "5V2A1545", a: 0.667 }, { n: "L1006038", a: 0.664 },
+  { n: "5V2A1577", a: 0.667 }, { n: "L1006043", a: 0.664 },
+  { n: "5V2A1587", a: 0.667 }, { n: "L1006085", a: 0.664 },
+  { n: "5V2A1637", a: 0.667 }, { n: "L1006800", a: 0.667 },
+  { n: "L1003871", a: 0.664 }, { n: "L1004838", a: 0.664 },
+  { n: "L1005053", a: 0.664 }, { n: "L1005704", a: 0.664 },
+  { n: "L1005839", a: 0.664 }, { n: "L1005910", a: 0.664 },
+  { n: "L1006491", a: 0.664 }, { n: "5V2A3469", a: 0.667 },
+];
+
 /* ==========================================================================
    PAGE
    ========================================================================== */
 
 export default function MediaKit() {
+  const [lightboxIdx, setLightboxIdx] = useState<number | null>(null);
+  const touchStartX = useRef(0);
+
+  const closeLightbox = useCallback(() => {
+    setLightboxIdx(null);
+    document.body.style.overflow = "";
+  }, []);
+
+  const prev = useCallback(() => {
+    setLightboxIdx((i) => (i !== null && i > 0 ? i - 1 : i));
+  }, []);
+
+  const next = useCallback(() => {
+    setLightboxIdx((i) =>
+      i !== null && i < PHOTOS.length - 1 ? i + 1 : i
+    );
+  }, []);
+
+  const openLightbox = useCallback((idx: number) => {
+    setLightboxIdx(idx);
+    document.body.style.overflow = "hidden";
+  }, []);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (lightboxIdx === null) return;
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowLeft") prev();
+      if (e.key === "ArrowRight") next();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [lightboxIdx, closeLightbox, prev, next]);
+
   return (
     <main className="min-h-screen">
       {/* ── NAV ─────────────────────────────────────────────────────── */}
@@ -666,64 +744,69 @@ export default function MediaKit() {
       {/* ── PHOTO GRID ──────────────────────────────────────────────── */}
       <section className="py-16 px-1 sm:px-2 md:px-3">
         <div className="gallery-grid">
-          {[
-            { n: "5V2A5389", a: 0.667 }, { n: "L1006452", a: 0.664 },
-            { n: "5V2A3284", a: 0.667 }, { n: "L1005057", a: 0.664 },
-            { n: "5V2A0425", a: 0.667 }, { n: "L1006194", a: 0.664 },
-            { n: "5V2A3332", a: 0.667 }, { n: "L1005698", a: 0.664 },
-            { n: "5V2A4677", a: 0.667 }, { n: "L1006421", a: 0.664 },
-            { n: "5V2A0518", a: 0.667 }, { n: "L1005006", a: 0.664 },
-            { n: "5V2A3450", a: 0.667 }, { n: "L1006147", a: 0.664 },
-            { n: "5V2A5426", a: 0.667 }, { n: "L1005623", a: 0.664 },
-            { n: "5V2A9274", a: 0.667 }, { n: "L1006382", a: 0.664 },
-            { n: "5V2A3392", a: 0.667 }, { n: "L1005814", a: 0.664 },
-            { n: "5V2A0462", a: 0.667 }, { n: "L1003913", a: 0.664 },
-            { n: "5V2A5591", a: 0.667 }, { n: "L1006742", a: 0.667 },
-            { n: "5V2A3444", a: 0.667 }, { n: "L1005855", a: 1.504 },
-            { n: "5V2A4785", a: 0.667 }, { n: "L1006463", a: 0.664 },
-            { n: "5V2A5467", a: 0.667 }, { n: "L1005919", a: 0.664 },
-            { n: "5V2A0503", a: 0.667 }, { n: "L1004870", a: 0.664 },
-            { n: "5V2A3335", a: 0.667 }, { n: "L1006357", a: 0.664 },
-            { n: "5V2A5457", a: 0.667 }, { n: "L1005734", a: 0.664 },
-            { n: "5V2A8799", a: 0.667 }, { n: "L1006450", a: 0.664 },
-            { n: "5V2A5521", a: 0.667 }, { n: "L1005821", a: 0.664 },
-            { n: "5V2A0522", a: 0.667 }, { n: "L1004895", a: 0.664 },
-            { n: "5V2A3534", a: 0.667 }, { n: "L1006377", a: 0.664 },
-            { n: "5V2A5492", a: 0.667 }, { n: "L1005766", a: 0.664 },
-            { n: "5V2A9351", a: 0.667 }, { n: "L1006467", a: 0.664 },
-            { n: "5V2A5586", a: 0.667 }, { n: "L1005908", a: 0.664 },
-            { n: "5V2A0597", a: 0.667 }, { n: "L1004914", a: 0.664 },
-            { n: "5V2A3246", a: 0.667 }, { n: "L1006221", a: 0.664 },
-            { n: "5V2A4561", a: 0.667 }, { n: "L1005630", a: 0.664 },
-            { n: "5V2A0325", a: 0.667 }, { n: "L1006715", a: 0.667 },
-            { n: "5V2A3422", a: 0.667 }, { n: "L1005827", a: 0.664 },
-            { n: "5V2A4590", a: 0.667 }, { n: "L1005617", a: 0.664 },
-            { n: "5V2A4800", a: 0.667 }, { n: "L1006774", a: 0.664 },
-            { n: "5V2A1545", a: 0.667 }, { n: "L1006038", a: 0.664 },
-            { n: "5V2A1577", a: 0.667 }, { n: "L1006043", a: 0.664 },
-            { n: "5V2A1587", a: 0.667 }, { n: "L1006085", a: 0.664 },
-            { n: "5V2A1637", a: 0.667 }, { n: "L1006800", a: 0.667 },
-            { n: "L1003871", a: 0.664 }, { n: "L1004838", a: 0.664 },
-            { n: "L1005053", a: 0.664 }, { n: "L1005704", a: 0.664 },
-            { n: "L1005839", a: 0.664 }, { n: "L1005910", a: 0.664 },
-            { n: "L1006491", a: 0.664 }, { n: "5V2A3469", a: 0.667 },
-          ].map(({ n, a }, i) => (
+          {PHOTOS.map(({ n, a }, i) => (
             <div
               key={n}
-              className="gallery-item rounded-lg"
+              className="gallery-item cursor-pointer"
               style={{ "--aspect": a } as React.CSSProperties}
+              onClick={() => openLightbox(i)}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={`/photos/${n}.webp`}
                 alt="Open Residency"
-                className="rounded-lg"
                 loading={i < 8 ? "eager" : "lazy"}
               />
             </div>
           ))}
         </div>
       </section>
+
+      {/* ── LIGHTBOX ───────────────────────────────────────────────── */}
+      {lightboxIdx !== null && (
+        <div
+          className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/95"
+          onClick={closeLightbox}
+          onTouchStart={(e) => { touchStartX.current = e.changedTouches[0].screenX; }}
+          onTouchEnd={(e) => {
+            const diff = touchStartX.current - e.changedTouches[0].screenX;
+            if (Math.abs(diff) > 50) { diff > 0 ? next() : prev(); }
+          }}
+        >
+          <button
+            className="absolute top-4 right-5 text-white/60 hover:text-white text-3xl z-10"
+            onClick={closeLightbox}
+            aria-label="Close"
+          >
+            &times;
+          </button>
+          {lightboxIdx > 0 && (
+            <button
+              className="absolute left-4 top-1/2 -translate-y-1/2 text-white/60 hover:text-white text-2xl z-10 p-2"
+              onClick={(e) => { e.stopPropagation(); prev(); }}
+              aria-label="Previous"
+            >
+              &#8592;
+            </button>
+          )}
+          {lightboxIdx < PHOTOS.length - 1 && (
+            <button
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-white/60 hover:text-white text-2xl z-10 p-2"
+              onClick={(e) => { e.stopPropagation(); next(); }}
+              aria-label="Next"
+            >
+              &#8594;
+            </button>
+          )}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={`/photos/${PHOTOS[lightboxIdx].n}.webp`}
+            alt="Open Residency"
+            className="max-w-[95vw] max-h-[90vh] object-contain"
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
 
       {/* ── FOOTER ──────────────────────────────────────────────────── */}
       <footer className="border-t border-neutral-200 mt-8">
