@@ -665,7 +665,7 @@ export default function MediaKit() {
 
       {/* ── PHOTO GRID ──────────────────────────────────────────────── */}
       <section className="max-w-7xl mx-auto px-6 py-16">
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+        <div className="columns-2 sm:columns-3 md:columns-4 gap-3">
           {[
             "5V2A5389", "L1006452", "5V2A3284", "L1005057", "5V2A0425",
             "L1006194", "5V2A3332", "L1005698", "5V2A4677", "L1006421",
@@ -689,7 +689,7 @@ export default function MediaKit() {
               key={name}
               src={`/photos/${name}.webp`}
               alt="Open Residency"
-              className="w-full aspect-[4/3] object-cover rounded-lg"
+              className="w-full rounded-lg mb-3 break-inside-avoid"
               loading={i < 8 ? "eager" : "lazy"}
             />
           ))}
