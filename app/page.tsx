@@ -696,6 +696,39 @@ export default function MediaKit() {
         </div>
       </section>
 
+      {/* ── PHOTO GRID ──────────────────────────────────────────────── */}
+      <section className="max-w-7xl mx-auto px-6 py-16">
+        <div className="columns-2 sm:columns-3 md:columns-4 gap-3 space-y-3">
+          {[
+            "5V2A5389", "L1006452", "5V2A3284", "L1005057", "5V2A0425",
+            "L1006194", "5V2A3332", "L1005698", "5V2A4677", "L1006421",
+            "5V2A0518", "L1005006", "5V2A3450", "L1006147", "5V2A5426",
+            "L1005623", "5V2A9274", "L1006382", "5V2A3392", "L1005814",
+            "5V2A0462", "L1003913", "5V2A5591", "L1006742", "5V2A3444",
+            "L1005855", "5V2A4785", "L1006463", "5V2A5467", "L1005919",
+            "5V2A0503", "L1004870", "5V2A3335", "L1006357", "5V2A5457",
+            "L1005734", "5V2A8799", "L1006450", "5V2A5521", "L1005821",
+            "5V2A0522", "L1004895", "5V2A3534", "L1006377", "5V2A5492",
+            "L1005766", "5V2A9351", "L1006467", "5V2A5586", "L1005908",
+            "5V2A0597", "L1004914", "5V2A3246", "L1006221", "5V2A4561",
+            "L1005630", "5V2A0325", "L1006715", "5V2A3422", "L1005827",
+            "5V2A4590", "L1005617", "5V2A4800", "L1006774", "5V2A1545",
+            "L1006038", "5V2A1577", "L1006043", "5V2A1587", "L1006085",
+            "5V2A1637", "L1006800", "L1003871", "L1004838", "L1005053",
+            "L1005704", "L1005839", "L1005910", "L1006491", "5V2A3469",
+          ].map((name) => (
+            <Image
+              key={name}
+              src={`/photos/${name}.webp`}
+              alt="Open Residency"
+              width={800}
+              height={600}
+              className="w-full rounded-lg"
+            />
+          ))}
+        </div>
+      </section>
+
       {/* ── FOOTER ──────────────────────────────────────────────────── */}
       <footer className="border-t border-neutral-200 mt-8">
         <div className="max-w-6xl mx-auto px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-4">
