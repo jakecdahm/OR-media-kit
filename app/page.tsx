@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import {
   AreaChart,
@@ -252,44 +251,17 @@ function GuestCard({
   return <div className={className}>{content}</div>;
 }
 
-const VIMEO_THUMB =
-  "https://i.vimeocdn.com/video/2122732028-dbb8da80b6e70b11d0e27581ae34fc8a8edc30ca6d102b5766b1445712e12d46-d_1920x1080";
-
 function SizzleReel() {
-  const [playing, setPlaying] = useState(false);
-
   return (
     <section className="max-w-6xl mx-auto px-6 pt-16 pb-0">
       <div className="rounded-2xl overflow-hidden border border-neutral-200/60 shadow-sm">
         <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
-          {playing ? (
-            <iframe
-              src="https://player.vimeo.com/video/1165442164?h=03653a5f79&autoplay=1&title=0&byline=0&portrait=0"
-              className="absolute inset-0 w-full h-full"
-              allow="autoplay; fullscreen; picture-in-picture"
-              allowFullScreen
-            />
-          ) : (
-            <button
-              onClick={() => setPlaying(true)}
-              className="absolute inset-0 w-full h-full cursor-pointer group"
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={VIMEO_THUMB}
-                alt="Open Residency — Sizzle Reel"
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white/90 flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform">
-                  <svg className="w-7 h-7 md:w-8 md:h-8 text-neutral-900 ml-1" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                </div>
-              </div>
-            </button>
-          )}
+          <iframe
+            src="https://player.vimeo.com/video/1165442164?h=03653a5f79&title=0&byline=0&portrait=0"
+            className="absolute inset-0 w-full h-full"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowFullScreen
+          />
         </div>
       </div>
     </section>
