@@ -742,7 +742,7 @@ export default function MediaKit() {
       </section>
 
       {/* ── PHOTO GRID ──────────────────────────────────────────────── */}
-      <section className="py-16 px-1 sm:px-2 md:px-3">
+      <section className="max-w-6xl mx-auto px-6 py-16">
         <div className="gallery-grid">
           {PHOTOS.map(({ n, a }, i) => (
             <div
