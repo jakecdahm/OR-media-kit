@@ -698,7 +698,7 @@ export default function MediaKit() {
 
       {/* ── PHOTO GRID ──────────────────────────────────────────────── */}
       <section className="max-w-7xl mx-auto px-6 py-16">
-        <div className="columns-2 sm:columns-3 md:columns-4 gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
           {[
             "5V2A5389", "L1006452", "5V2A3284", "L1005057", "5V2A0425",
             "L1006194", "5V2A3332", "L1005698", "5V2A4677", "L1006421",
@@ -716,14 +716,14 @@ export default function MediaKit() {
             "L1006038", "5V2A1577", "L1006043", "5V2A1587", "L1006085",
             "5V2A1637", "L1006800", "L1003871", "L1004838", "L1005053",
             "L1005704", "L1005839", "L1005910", "L1006491", "5V2A3469",
-          ].map((name) => (
+          ].map((name, i) => (
             // eslint-disable-next-line @next/next/no-img-element
             <img
               key={name}
               src={`/photos/${name}.webp`}
               alt="Open Residency"
-              className="w-full rounded-lg mb-3 break-inside-avoid"
-              loading="lazy"
+              className="w-full aspect-[4/3] object-cover rounded-lg"
+              loading={i < 8 ? "eager" : "lazy"}
             />
           ))}
         </div>
