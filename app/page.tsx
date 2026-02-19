@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import {
   AreaChart,
@@ -68,39 +69,49 @@ const PUBLISHED_GUESTS = [
   { name: "Oliver Zak", company: "Mad Rabbit", note: "8 figures", url: "https://www.youtube.com/watch?v=mbsjQncrqzw" },
   { name: "Manny Lubin", company: "Slate Milk", note: "8 figures", url: "https://www.youtube.com/watch?v=MzX-PxocoPw" },
   { name: "Nick Shackelford", company: "Brez / Structured", note: "8 figures", url: "https://www.youtube.com/watch?v=mdqvLXm48aE" },
-  { name: "Simon Molnar", company: "Flagship.ai", note: "Family founded Afterpay", url: "https://www.youtube.com/@openresidency" },
+  { name: "Simon Molnar", company: "Flagship.ai", note: "8 figures", url: "https://www.youtube.com/@openresidency" },
   { name: "Sahil Bloom", company: "Creator", note: "NYT Best Seller", url: "https://www.youtube.com/watch?v=9yjGTflQDbg" },
   { name: "Mark Manson", company: "Author", note: "NYT Best Seller", url: "https://www.youtube.com/watch?v=sgpmGr1e3iI" },
-  { name: "Dan Koe", company: "Creator", note: "Live Episode", url: "https://www.youtube.com/watch?v=EVDQ1MijHbk" },
-  { name: "Samir", company: "Colin and Samir", note: "Live Episode", url: "https://www.youtube.com/watch?v=Yl_HLGoWWJE" },
-  { name: "Kane Kallaway", company: "Creator", note: "Live Episode", url: "https://www.youtube.com/watch?v=VcqQmrGqthg" },
-  { name: "Caleb Ralston", company: "Creator", note: "Hormozi / Vayner", url: "https://www.youtube.com/watch?v=g8i0FYcJEAE" },
-  { name: "Oren John", company: "Creator", note: "Internet's Creative Director", url: "https://www.youtube.com/watch?v=uI5Qo58FqiE" },
-  { name: "RPN", company: "Creator", note: "", url: "https://www.youtube.com/watch?v=b-fTeo4a9N8" },
+  { name: "Dan Koe", company: "Creator", note: "Culture", url: "https://www.youtube.com/watch?v=EVDQ1MijHbk" },
+  { name: "Samir", company: "Colin and Samir", note: "Culture", url: "https://www.youtube.com/watch?v=Yl_HLGoWWJE" },
+  { name: "Kane Kallaway", company: "Creator", note: "Culture", url: "https://www.youtube.com/watch?v=VcqQmrGqthg" },
+  { name: "Caleb Ralston", company: "Creator", note: "Culture", url: "https://www.youtube.com/watch?v=g8i0FYcJEAE" },
+  { name: "Oren John", company: "Creator", note: "Culture", url: "https://www.youtube.com/watch?v=uI5Qo58FqiE" },
+  { name: "RPN", company: "Creator", note: "Culture", url: "https://www.youtube.com/watch?v=b-fTeo4a9N8" },
+  { name: "Jeff Byers", company: "Momentous", note: "9 figures", url: "https://www.youtube.com/@openresidency" },
 ];
 
 const UPCOMING_GUESTS = [
-  { name: "Taylor Holiday", company: "Common Thread Collective", note: "8 figures", filmed: true },
-  { name: "Daniel Arsham", company: "Artist / Creator", note: "", filmed: false },
-  { name: "Paddy Gallaway", company: "YouTube Strategist", note: "", filmed: false },
-  { name: "Hormozi", company: "Acquisition.com", note: "", filmed: false },
-  { name: "Simon Squibb", company: "Entrepreneur", note: "", filmed: false },
-  { name: "Codie Sanchez", company: "Contrarian Thinking", note: "", filmed: false },
-  { name: "Dom Iacavone", company: "RAW & more", note: "9 figures", filmed: false },
-  { name: "Rob Dyrdek", company: "Dyrdek Machine", note: "", filmed: false },
-  { name: "Marc Ecko", company: "Ecko", note: "", filmed: false },
-  { name: "OMG Adrian", company: "Creator", note: "", filmed: false },
-  { name: "Jeff Byers", company: "Momentous", note: "9 figures", filmed: false },
-  { name: "Megan Lightcap", company: "Slow Ventures", note: "Creator Fund", filmed: true },
-  { name: "Dan Martell", company: "SaaS Academy", note: "", filmed: false },
-  { name: "Matt Gray", company: "Creator", note: "", filmed: false },
-  { name: "Baseball Lifestyle", company: "", note: "9 figures", filmed: false },
+  { name: "Taylor Holiday", company: "CommonThread Collective", note: "8 figures", filmed: true },
+  { name: "Daniel Arsham", company: "Creator", note: "Culture", filmed: false },
+  { name: "Paddy Gallaway", company: "Creator", note: "Culture", filmed: false },
+  { name: "Simon Squibb", company: "Creator", note: "Culture", filmed: false },
+  { name: "Codie Sanchez", company: "Contrarian Thinking", note: "8 figures", filmed: false },
+  { name: "Dom Iacavone", company: "RAW (and more)", note: "9 figures", filmed: false },
+  { name: "Rob Dyrdek", company: "Dyrdek Machine/Existence", note: "", filmed: false },
+  { name: "Marc Ecko", company: "Ecko (and more)", note: "", filmed: false },
+  { name: "OMG Adrian", company: "Creator", note: "Culture", filmed: false },
+  { name: "Meghan Lightcap", company: "Slow Ventures", note: "Fund", filmed: true },
+  { name: "Dan Martell", company: "SaaS Academy", note: "8 figures", filmed: false },
+  { name: "Matt Gray", company: "Founder OS", note: "8 figures", filmed: false },
+  { name: "Josh/Bill", company: "Baseball Lifestyle", note: "9 figures", filmed: false },
   { name: "Alex Sobol", company: "Millennium", note: "9 figures", filmed: false },
-  { name: "Geoffrey Woo", company: "Anti Fund", note: "", filmed: false },
-  { name: "Chris Voss", company: "Author", note: "Never Split the Difference", filmed: false },
-  { name: "Dad Gang", company: "", note: "8 figures", filmed: false },
+  { name: "Chris Voss", company: "Author", note: "NYT Best Seller", filmed: false },
+  { name: "Bart Szaniewski", company: "Dad Gang", note: "8 figures", filmed: false },
   { name: "Bruno Casanovas", company: "Nude", note: "8 figures", filmed: false },
-  { name: "Danny Yeung", company: "IM8", note: "", filmed: true },
+  { name: "Danny Yeung", company: "IM8", note: "9 figures", filmed: true },
+  { name: "Sean Riley", company: "Dude Wipes", note: "9 figures", filmed: false },
+  { name: "Dave Grutman", company: "Miami", note: "Culture", filmed: false },
+  { name: "Nick Green", company: "Thrive Market", note: "10 figures", filmed: false },
+  { name: "Georgios Frangulis", company: "Oakberry", note: "9 figures", filmed: false },
+  { name: "Hudson Leogrande", company: "COMFRT", note: "9 figures", filmed: false },
+  { name: "Greg Lavecchia", company: "Bloom Nutrition", note: "9 figures", filmed: false },
+  { name: "Tyler Denk", company: "Beehiv", note: "9 figures", filmed: false },
+  { name: "Nima Jalali", company: "Salt & Stone", note: "9 figures", filmed: false },
+  { name: "Michael Brandt", company: "Ketone", note: "8 figures", filmed: false },
+  { name: "Adam/Ryan Goldston", company: "APL", note: "8 figures", filmed: false },
+  { name: "Rourke Heath", company: "Creator", note: "Culture", filmed: false },
+  { name: "Ilya Pozin", company: "TELLY", note: "9 figures", filmed: false },
 ];
 
 /* ==========================================================================
@@ -241,6 +252,50 @@ function GuestCard({
   return <div className={className}>{content}</div>;
 }
 
+const VIMEO_THUMB =
+  "https://i.vimeocdn.com/video/2122732028-dbb8da80b6e70b11d0e27581ae34fc8a8edc30ca6d102b5766b1445712e12d46-d_1920x1080";
+
+function SizzleReel() {
+  const [playing, setPlaying] = useState(false);
+
+  return (
+    <section className="max-w-6xl mx-auto px-6 pt-16 pb-0">
+      <div className="rounded-2xl overflow-hidden border border-neutral-200/60 shadow-sm">
+        <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
+          {playing ? (
+            <iframe
+              src="https://player.vimeo.com/video/1165442164?h=03653a5f79&autoplay=1&title=0&byline=0&portrait=0"
+              className="absolute inset-0 w-full h-full"
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowFullScreen
+            />
+          ) : (
+            <button
+              onClick={() => setPlaying(true)}
+              className="absolute inset-0 w-full h-full cursor-pointer group"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={VIMEO_THUMB}
+                alt="Open Residency — Sizzle Reel"
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors" />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white/90 flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform">
+                  <svg className="w-7 h-7 md:w-8 md:h-8 text-neutral-900 ml-1" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </div>
+              </div>
+            </button>
+          )}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ==========================================================================
    PAGE
    ========================================================================== */
@@ -344,18 +399,7 @@ export default function MediaKit() {
       </div>
 
       {/* ── SIZZLE REEL ──────────────────────────────────────────── */}
-      <section className="max-w-6xl mx-auto px-6 pt-16 pb-0">
-        <div className="rounded-2xl overflow-hidden border border-neutral-200/60 shadow-sm">
-          <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
-            <iframe
-              src="https://player.vimeo.com/video/1165442164?h=03653a5f79&title=0&byline=0&portrait=0"
-              className="absolute inset-0 w-full h-full"
-              allow="autoplay; fullscreen; picture-in-picture"
-              allowFullScreen
-            />
-          </div>
-        </div>
-      </section>
+      <SizzleReel />
 
       {/* ── ABOUT THE SHOW ────────────────────────────────────────── */}
       <section className="max-w-6xl mx-auto px-6 py-16">
@@ -648,14 +692,13 @@ export default function MediaKit() {
         />
 
         <div className="bg-white rounded-2xl border border-neutral-200/60 shadow-sm p-8 md:p-10 mb-10">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 items-center">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 items-center">
             {[
               { name: "COMCAST", category: "CTV" },
               { name: "BEEHIIV", category: "Email" },
-              { name: "K&L GATES", category: "Legal" },
-              { name: "POPPY.AI", category: "AI" },
               { name: "MANYCHAT", category: "Messaging" },
-              { name: "LINDY", category: "AI" },
+              { name: "POPPY.AI", category: "AI" },
+              { name: "K&L GATES", category: "Legal" },
             ].map((p) => (
               <div key={p.name} className="flex flex-col items-center justify-center py-3">
                 <span className="text-base font-bold tracking-tight text-neutral-800">
