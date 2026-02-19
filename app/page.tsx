@@ -17,22 +17,13 @@ import {
    DATA
    ========================================================================== */
 
-const MONTHLY_YT_VIEWS = [
-  { month: "Aug '25", views: 100028 },
-  { month: "Sep '25", views: 58118 },
-  { month: "Oct '25", views: 290417 },
-  { month: "Nov '25", views: 239807 },
-  { month: "Dec '25", views: 180068 },
-  { month: "Jan '26", views: 242666 },
-];
-
-const MONTHLY_STREAMS = [
-  { month: "Aug '25", streams: 6917 },
-  { month: "Sep '25", streams: 10365 },
-  { month: "Oct '25", streams: 17766 },
-  { month: "Nov '25", streams: 20827 },
-  { month: "Dec '25", streams: 28245 },
-  { month: "Jan '26", streams: 39586 },
+const MONTHLY_VIEWS = [
+  { month: "Aug '25", views: 106945 },
+  { month: "Sep '25", views: 68483 },
+  { month: "Oct '25", views: 308183 },
+  { month: "Nov '25", views: 260634 },
+  { month: "Dec '25", views: 208313 },
+  { month: "Jan '26", views: 282252 },
 ];
 
 const AGE_DATA = [
@@ -358,9 +349,9 @@ export default function MediaKit() {
             sub="Thumbnail impressions served"
           />
           <StatCard
-            value="472%"
-            label="Stream Growth"
-            sub="Spotify streams Aug '25 → Jan '26"
+            value="164%"
+            label="View Growth"
+            sub="Monthly views Aug '25 → Jan '26"
           />
         </div>
       </section>
@@ -437,10 +428,10 @@ export default function MediaKit() {
           <StatCard
             value="255K+"
             label="Watch Hours"
-            sub="YouTube (last 6 months)"
+            sub="Last 6 months"
           />
           <StatCard
-            value="290K"
+            value="308K"
             label="Peak Month Views"
             sub="October 2025"
           />
@@ -459,11 +450,11 @@ export default function MediaKit() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="lg:col-span-2 bg-white rounded-2xl border border-neutral-200/60 shadow-sm p-6">
             <h3 className="text-sm font-semibold text-neutral-500 uppercase tracking-wider mb-4">
-              Monthly YouTube Views
+              Monthly Views
             </h3>
             <div className="h-64">
               <ResponsiveContainer width="100%" height="100%">
-                <AreaChart data={MONTHLY_YT_VIEWS}>
+                <AreaChart data={MONTHLY_VIEWS}>
                   <defs>
                     <linearGradient id="ytGrad" x1="0" y1="0" x2="0" y2="1">
                       <stop offset="0%" stopColor={ACCENT} stopOpacity={0.12} />
@@ -481,30 +472,6 @@ export default function MediaKit() {
           </div>
 
           <div className="space-y-4">
-            <div className="bg-white rounded-2xl border border-neutral-200/60 shadow-sm p-6">
-              <h3 className="text-sm font-semibold text-neutral-500 uppercase tracking-wider mb-3">
-                Spotify Stream Trajectory
-              </h3>
-              <div className="flex flex-wrap items-center gap-2 text-sm font-medium text-neutral-600">
-                {MONTHLY_STREAMS.map((m, i) => (
-                  <span key={m.month} className="flex items-center gap-1.5">
-                    <span className="tabular-nums">{fmt(m.streams)}</span>
-                    {i < MONTHLY_STREAMS.length - 1 && (
-                      <span className="text-neutral-300">&rarr;</span>
-                    )}
-                  </span>
-                ))}
-              </div>
-              <div className="flex items-center gap-2 mt-3">
-                <span className="text-[10px] font-bold tracking-wider uppercase px-2 py-0.5 rounded-full bg-neutral-900 text-white">
-                  472% growth
-                </span>
-                <span className="text-xs text-neutral-400">
-                  Aug &apos;25 &rarr; Jan &apos;26
-                </span>
-              </div>
-            </div>
-
             <div className="bg-white rounded-2xl border border-neutral-200/60 shadow-sm p-6">
               <p className="text-4xl font-bold">8x</p>
               <p className="text-sm text-neutral-500 mt-1">
