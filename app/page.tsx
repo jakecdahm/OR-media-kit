@@ -461,7 +461,7 @@ export default function MediaKit() {
       <section className="max-w-6xl mx-auto px-6 py-16">
         <SectionHeader
           title="Long-Form Content"
-          subtitle="Full episodes on YouTube"
+          subtitle="YouTube, Spotify, Apple Podcasts"
         />
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
@@ -499,6 +499,28 @@ export default function MediaKit() {
               </div>
             </a>
           ))}
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+          <div className="rounded-2xl overflow-hidden border border-neutral-200/60 shadow-sm bg-white">
+            <iframe
+              src="https://open.spotify.com/embed/show/5SPMRnD4iKSHKcTl4mMqbM?theme=0"
+              className="w-full border-0"
+              height="352"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"
+            />
+          </div>
+          <div className="rounded-2xl overflow-hidden border border-neutral-200/60 shadow-sm bg-white">
+            <iframe
+              src="https://embed.podcasts.apple.com/us/podcast/open-residency/id1791782856?theme=light"
+              className="w-full border-0"
+              height="352"
+              allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
+              loading="lazy"
+              sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation"
+            />
+          </div>
         </div>
       </section>
 
