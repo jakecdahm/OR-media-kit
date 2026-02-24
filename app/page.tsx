@@ -478,7 +478,7 @@ export default function MediaKit() {
               <iframe
                 src={`https://www.instagram.com/reel/${id}/embed/`}
                 className="w-full border-0 overflow-hidden"
-                height="520"
+                height="680"
                 allow="encrypted-media"
               />
             </div>
@@ -564,108 +564,6 @@ export default function MediaKit() {
           </div>
         </div>
 
-        <div className="max-w-2xl mx-auto text-center">
-          <blockquote className="text-neutral-600 italic leading-relaxed text-lg">
-            &ldquo;He mentioned my name in passing on an episode and I got 4
-            inbound calls and 2 blue chip clients.&rdquo;
-          </blockquote>
-          <p className="text-sm font-semibold text-neutral-900 mt-4">
-            Tyler Denk
-          </p>
-          <p className="text-xs text-neutral-400">CEO, Beehiiv</p>
-        </div>
-      </section>
-
-      {/* ── DIVIDER ─────────────────────────────────────────────────── */}
-      <div className="max-w-6xl mx-auto px-6">
-        <hr className="border-neutral-200" />
-      </div>
-
-      {/* ── PARTNERSHIP OPTIONS ─────────────────────────────────────── */}
-      <section className="max-w-6xl mx-auto px-6 py-16">
-        <SectionHeader
-          title="Partnership Options"
-          subtitle="Flexible packages tailored to your goals"
-        />
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-          {[
-            {
-              tier: "Single Episode",
-              price: "[TBD]",
-              features: [
-                "1x host-read ad (60-90s)",
-                "Social post on @openresidency",
-                "Logo in episode description",
-                "Performance report",
-              ],
-            },
-            {
-              tier: "Monthly",
-              price: "[TBD]",
-              popular: true,
-              features: [
-                "All episodes that month",
-                "Host-read ad + product placement",
-                "Instagram Reel feature",
-                "Dedicated social amplification",
-                "Monthly performance report",
-              ],
-            },
-            {
-              tier: "Quarterly",
-              price: "[TBD]",
-              features: [
-                "All episodes (3 months)",
-                "Custom branded segment",
-                "Product placement + host-read",
-                "Full social package (IG, YT, X)",
-                "Guest appearance opportunity",
-                "Quarterly strategy review",
-              ],
-            },
-          ].map((pkg) => (
-            <div
-              key={pkg.tier}
-              className={`bg-white rounded-2xl p-6 shadow-sm border ${
-                pkg.popular
-                  ? "border-neutral-900 ring-1 ring-neutral-900"
-                  : "border-neutral-200/60"
-              } flex flex-col`}
-            >
-              {pkg.popular && (
-                <span className="text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full bg-neutral-900 text-white self-start mb-3">
-                  Most Popular
-                </span>
-              )}
-              <h3 className="text-lg font-bold text-neutral-900">{pkg.tier}</h3>
-              <p className="text-2xl font-bold text-neutral-900 mt-2 mb-4">
-                {pkg.price}
-                <span className="text-sm font-normal text-neutral-400"> / package</span>
-              </p>
-              <ul className="space-y-2 flex-1">
-                {pkg.features.map((f) => (
-                  <li key={f} className="flex items-start gap-2 text-sm text-neutral-600">
-                    <span className="text-neutral-900 mt-0.5">&#10003;</span>
-                    {f}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-
-        <div className="text-center">
-          <a
-            href="mailto:mark@openresidency.com"
-            className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-neutral-900 text-white text-sm font-semibold hover:bg-neutral-800 transition-colors"
-          >
-            Let&apos;s Talk
-          </a>
-          <p className="text-xs text-neutral-400 mt-3">
-            mark@openresidency.com
-          </p>
-        </div>
       </section>
 
       {/* ── PHOTO GRID ──────────────────────────────────────────────── */}
