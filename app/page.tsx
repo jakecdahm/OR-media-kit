@@ -482,20 +482,24 @@ export default function MediaKit() {
             { id: "ccGFIAfyNyg", guest: "Kent Yoshimura", note: "NeuroGum, 9 figures" },
             { id: "2eGds8kLszE", guest: "Sean Frank", note: "Ridge, 9 figures" },
           ].map((ep) => (
-            <div key={ep.id} className="rounded-2xl overflow-hidden border border-neutral-200/60 shadow-sm bg-white">
-              <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
-                <iframe
-                  src={`https://www.youtube.com/embed/${ep.id}`}
-                  className="absolute inset-0 w-full h-full"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
-              </div>
+            <a
+              key={ep.id}
+              href={`https://www.youtube.com/watch?v=${ep.id}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-2xl overflow-hidden border border-neutral-200/60 shadow-sm bg-white hover:shadow-md transition-shadow block"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={`https://img.youtube.com/vi/${ep.id}/maxresdefault.jpg`}
+                alt={ep.guest}
+                className="w-full aspect-video object-cover"
+              />
               <div className="p-4">
                 <p className="font-semibold text-sm text-neutral-900">{ep.guest}</p>
                 <p className="text-xs text-neutral-500 mt-0.5">{ep.note}</p>
               </div>
-            </div>
+            </a>
           ))}
         </div>
       </section>
