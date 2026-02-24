@@ -441,9 +441,7 @@ export default function MediaKit() {
             </div>
           </div>
 
-          <div className="flex flex-col gap-4">
-            <StatCard value="2M+" label="Monthly Impressions" sub="Instagram short-form" />
-            <StatCard value="100K+" label="Combined Followers" sub="@openresidency + @markbrazil" />
+          <div className="flex flex-col gap-4 justify-center">
             <div className="bg-white rounded-2xl border border-neutral-200/60 shadow-sm p-5 flex items-center gap-2">
               <span className="text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full bg-neutral-900 text-white flex-shrink-0">
                 Q1 2026
@@ -461,12 +459,53 @@ export default function MediaKit() {
         <hr className="border-neutral-200" />
       </div>
 
+      {/* ── LONG-FORM CONTENT ────────────────────────────────────── */}
+      <section className="max-w-6xl mx-auto px-6 py-16">
+        <SectionHeader
+          title="Long-Form Content"
+          subtitle="Full episodes on YouTube"
+        />
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {[
+            { id: "-1aSoZ1ffTg", guest: "Robert Greene", note: "Author, 48 Laws of Power" },
+            { id: "VcqQmrGqthg", guest: "Kane Kallaway", note: "Creator" },
+            { id: "EVDQ1MijHbk", guest: "Dan Koe", note: "Creator" },
+          ].map((ep) => (
+            <div key={ep.id} className="rounded-2xl overflow-hidden border border-neutral-200/60 shadow-sm bg-white">
+              <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
+                <iframe
+                  src={`https://www.youtube.com/embed/${ep.id}`}
+                  className="absolute inset-0 w-full h-full"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
+              <div className="p-4">
+                <p className="font-semibold text-sm text-neutral-900">{ep.guest}</p>
+                <p className="text-xs text-neutral-500 mt-0.5">{ep.note}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── DIVIDER ─────────────────────────────────────────────────── */}
+      <div className="max-w-6xl mx-auto px-6">
+        <hr className="border-neutral-200" />
+      </div>
+
       {/* ── SHORT-FORM ──────────────────────────────────────────── */}
       <section className="max-w-6xl mx-auto px-6 py-16">
         <SectionHeader
           title="Short-Form Content"
           subtitle="Instagram Reels — @openresidency + @markbrazil"
         />
+
+        <div className="grid grid-cols-2 gap-4 mb-6">
+          <StatCard value="100K+" label="Combined Followers" sub="@openresidency + @markbrazil" />
+          <StatCard value="2M+" label="Monthly Impressions" sub="Combined across accounts" />
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {[
