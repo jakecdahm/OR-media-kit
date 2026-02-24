@@ -417,37 +417,25 @@ export default function MediaKit() {
           subtitle="Last 6 months (Aug '25 – Jan '26)"
         />
 
-        <div className="grid grid-cols-2 gap-4 mb-8">
+        <div className="grid grid-cols-3 gap-4 mb-8">
           <StatCard value="86%" label="Ages 23–44" sub="Core buying demographic" />
           <StatCard value="83%" label="Male" sub="Primary audience" />
+          <StatCard value="2X" label="Episode Frequency" sub="Q1 2026" />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-          <div className="bg-white rounded-2xl border border-neutral-200/60 shadow-sm p-6">
-            <h3 className="text-sm font-semibold text-neutral-500 uppercase tracking-wider mb-4">
-              Age Distribution
-            </h3>
-            <div className="h-48">
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={AGE_DATA} layout="vertical">
-                  <XAxis type="number" tick={{ fill: CHART_GRAY, fontSize: 11 }} axisLine={false} tickLine={false} tickFormatter={(v) => `${v}%`} />
-                  <YAxis type="category" dataKey="range" tick={{ fill: "#666", fontSize: 12 }} axisLine={false} tickLine={false} width={50} />
-                  <Tooltip content={<CustomTooltip suffix="%" />} />
-                  <Bar dataKey="value" fill={CHART_BLACK} radius={[0, 4, 4, 0]} barSize={14} />
-                </BarChart>
-              </ResponsiveContainer>
-            </div>
-          </div>
-
-          <div className="flex flex-col gap-4 justify-center">
-            <div className="bg-white rounded-2xl border border-neutral-200/60 shadow-sm p-5 flex items-center gap-2">
-              <span className="text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full bg-neutral-900 text-white flex-shrink-0">
-                Q1 2026
-              </span>
-              <span className="text-sm text-neutral-600">
-                2X episode frequency
-              </span>
-            </div>
+        <div className="bg-white rounded-2xl border border-neutral-200/60 shadow-sm p-6 mb-8">
+          <h3 className="text-sm font-semibold text-neutral-500 uppercase tracking-wider mb-4">
+            Age Distribution
+          </h3>
+          <div className="h-48">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart data={AGE_DATA} layout="vertical">
+                <XAxis type="number" tick={{ fill: CHART_GRAY, fontSize: 11 }} axisLine={false} tickLine={false} tickFormatter={(v) => `${v}%`} />
+                <YAxis type="category" dataKey="range" tick={{ fill: "#666", fontSize: 12 }} axisLine={false} tickLine={false} width={50} />
+                <Tooltip content={<CustomTooltip suffix="%" />} />
+                <Bar dataKey="value" fill={CHART_BLACK} radius={[0, 4, 4, 0]} barSize={14} />
+              </BarChart>
+            </ResponsiveContainer>
           </div>
         </div>
       </section>
