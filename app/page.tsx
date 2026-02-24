@@ -410,18 +410,16 @@ export default function MediaKit() {
         <hr className="border-neutral-200" />
       </div>
 
-      {/* ── AUDIENCE & PERFORMANCE ─────────────────────────────────── */}
+      {/* ── AUDIENCE PROFILE ──────────────────────────────────────── */}
       <section className="max-w-6xl mx-auto px-6 py-16">
         <SectionHeader
-          title="Audience & Performance"
+          title="Audience Profile"
           subtitle="Last 6 months (Aug '25 – Jan '26)"
         />
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+        <div className="grid grid-cols-2 gap-4 mb-8">
           <StatCard value="86%" label="Ages 23–44" sub="Core buying demographic" />
           <StatCard value="83%" label="Male" sub="Primary audience" />
-          <StatCard value="255K+" label="Watch Hours" sub="Long-form only" />
-          <StatCard value="22" label="Long-Form Episodes" sub="+ 198 short-form clips" />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
@@ -624,6 +622,7 @@ export default function MediaKit() {
 
       {/* ── PHOTO GRID ──────────────────────────────────────────────── */}
       <section className="max-w-6xl mx-auto px-6 py-16">
+        <SectionHeader title="BTS" />
         <div className="gallery-grid">
           {PHOTOS.map(({ n, a }, i) => (
             <div
