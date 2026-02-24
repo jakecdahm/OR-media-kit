@@ -330,12 +330,13 @@ export default function MediaKit() {
             </span>
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] mb-5">
-            The podcast for founders
+            The long-form podcast for
             <br />
-            &amp;&nbsp;operators
+            business operators
+            <br />
+            &amp;&nbsp;brand builders
           </h1>
           <p className="text-lg text-neutral-500 leading-relaxed">
-            The long-form podcast for business operators and brand builders&nbsp;&mdash;
             1.8M+ views in 6 months, and we&apos;re just getting started.
           </p>
           <div className="flex flex-wrap gap-3 mt-6">
