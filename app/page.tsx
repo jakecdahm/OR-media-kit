@@ -3,13 +3,10 @@
 import Image from "next/image";
 import { useState, useEffect, useCallback, useRef } from "react";
 import {
-  AreaChart,
-  Area,
   BarChart,
   Bar,
   XAxis,
   YAxis,
-  CartesianGrid,
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
@@ -18,15 +15,6 @@ import {
    DATA
    ========================================================================== */
 
-const MONTHLY_VIEWS = [
-  { month: "Aug '25", views: 106945 },
-  { month: "Sep '25", views: 68483 },
-  { month: "Oct '25", views: 308183 },
-  { month: "Nov '25", views: 260634 },
-  { month: "Dec '25", views: 208313 },
-  { month: "Jan '26", views: 282252 },
-];
-
 const AGE_DATA = [
   { range: "18–22", value: 5.1 },
   { range: "23–27", value: 22.3 },
@@ -34,16 +22,6 @@ const AGE_DATA = [
   { range: "35–44", value: 25.8 },
   { range: "45–59", value: 7.3 },
   { range: "60+", value: 1.1 },
-];
-
-const GEO_DATA = [
-  { country: "United States", value: 35.4 },
-  { country: "United Kingdom", value: 14.1 },
-  { country: "Australia", value: 9.0 },
-  { country: "Canada", value: 6.9 },
-  { country: "Germany", value: 3.3 },
-  { country: "Netherlands", value: 2.9 },
-  { country: "Other", value: 26.9 },
 ];
 
 const PUBLISHED_GUESTS = [
@@ -111,18 +89,10 @@ const UPCOMING_GUESTS = [
 
 const CHART_BLACK = "#1a1a1a";
 const CHART_GRAY = "#888";
-const ACCENT = "#1a1a1a";
-const GEO_BAR = "#1a1a1a";
 
 /* ==========================================================================
    HELPERS
    ========================================================================== */
-
-function fmt(n: number): string {
-  if (n >= 1000000) return (n / 1000000).toFixed(1) + "M";
-  if (n >= 1000) return (n / 1000).toFixed(1) + "K";
-  return n.toLocaleString();
-}
 
 function fmtFull(n: number): string {
   return n.toLocaleString();
@@ -419,7 +389,7 @@ export default function MediaKit() {
           <StatCard
             value="1.8M+"
             label="Cross-Platform Views"
-            sub="YouTube + All Podcast Platforms"
+            sub="Long-Form Only · YouTube + All Podcast Platforms"
           />
           <StatCard
             value="15.2M"
@@ -525,42 +495,56 @@ export default function MediaKit() {
           />
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-2 bg-white rounded-2xl border border-neutral-200/60 shadow-sm p-6">
-            <h3 className="text-sm font-semibold text-neutral-500 uppercase tracking-wider mb-4">
-              Monthly Views
-            </h3>
-            <div className="h-64">
-              <ResponsiveContainer width="100%" height="100%">
-                <AreaChart data={MONTHLY_VIEWS}>
-                  <defs>
-                    <linearGradient id="ytGrad" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor={ACCENT} stopOpacity={0.12} />
-                      <stop offset="100%" stopColor={ACCENT} stopOpacity={0.01} />
-                    </linearGradient>
-                  </defs>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#e5e5e5" vertical={false} />
-                  <XAxis dataKey="month" tick={{ fill: CHART_GRAY, fontSize: 12 }} axisLine={false} tickLine={false} />
-                  <YAxis tick={{ fill: CHART_GRAY, fontSize: 12 }} axisLine={false} tickLine={false} tickFormatter={(v) => fmt(v)} />
-                  <Tooltip content={<CustomTooltip />} />
-                  <Area type="monotone" dataKey="views" stroke={CHART_BLACK} strokeWidth={2.5} fill="url(#ytGrad)" />
-                </AreaChart>
-              </ResponsiveContainer>
-            </div>
-          </div>
+        <div className="bg-white rounded-2xl border border-neutral-200/60 shadow-sm p-5 inline-flex items-center gap-2">
+          <span className="text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full bg-neutral-900 text-white">
+            Q1 2026
+          </span>
+          <span className="text-sm text-neutral-600">
+            Doubling episode frequency&nbsp;&mdash; 2X launches per month
+          </span>
+        </div>
+      </section>
 
-          <div className="space-y-4">
-            <div className="bg-white rounded-2xl border border-neutral-200/60 shadow-sm p-6">
-              <p className="text-4xl font-bold">8x</p>
-              <p className="text-sm text-neutral-500 mt-1">
-                Spotify follower growth
-              </p>
-              <div className="flex items-center gap-1.5 mt-3 text-xs text-neutral-400">
-                <span className="inline-block w-1.5 h-1.5 rounded-full bg-neutral-900" />
-                669 &rarr; 5,371 followers
-              </div>
+      {/* ── DIVIDER ─────────────────────────────────────────────────── */}
+      <div className="max-w-6xl mx-auto px-6">
+        <hr className="border-neutral-200" />
+      </div>
+
+      {/* ── SHORT-FORM ──────────────────────────────────────────── */}
+      <section className="max-w-6xl mx-auto px-6 py-16">
+        <SectionHeader
+          title="Short-Form"
+          subtitle="Instagram Reels — @openresidency + @markbrazil"
+        />
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
+          <StatCard
+            value="2M+"
+            label="Monthly Impressions"
+            sub="Instagram short-form"
+          />
+          <StatCard
+            value="100K+"
+            label="Combined Followers"
+            sub="@openresidency + @markbrazil"
+          />
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {[
+            "DRkNaS3DldC",
+            "DR4zLzjDul-",
+            "DTssfhdDfsQ",
+          ].map((id) => (
+            <div key={id} className="rounded-2xl overflow-hidden border border-neutral-200/60 shadow-sm bg-white">
+              <iframe
+                src={`https://www.instagram.com/reel/${id}/embed/`}
+                className="w-full border-0 overflow-hidden"
+                height="520"
+                allow="encrypted-media"
+              />
             </div>
-          </div>
+          ))}
         </div>
       </section>
 
@@ -605,7 +589,7 @@ export default function MediaKit() {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="max-w-md">
           <div className="bg-white rounded-2xl border border-neutral-200/60 shadow-sm p-6">
             <h3 className="text-sm font-semibold text-neutral-500 uppercase tracking-wider mb-4">
               Age Distribution
@@ -619,33 +603,6 @@ export default function MediaKit() {
                   <Bar dataKey="value" fill={CHART_BLACK} radius={[0, 4, 4, 0]} barSize={14} />
                 </BarChart>
               </ResponsiveContainer>
-            </div>
-          </div>
-
-          <div className="bg-white rounded-2xl border border-neutral-200/60 shadow-sm p-6">
-            <h3 className="text-sm font-semibold text-neutral-500 uppercase tracking-wider mb-4">
-              Geography
-            </h3>
-            <div className="space-y-2.5">
-              {GEO_DATA.map((g) => (
-                <div key={g.country}>
-                  <div className="flex items-baseline justify-between text-sm mb-1">
-                    <span className="text-neutral-600">{g.country}</span>
-                    <span className="font-semibold tabular-nums">
-                      {g.value}%
-                    </span>
-                  </div>
-                  <div className="w-full bg-neutral-100 rounded-full h-1.5">
-                    <div
-                      className="h-1.5 rounded-full"
-                      style={{
-                        width: `${(g.value / 35.4) * 100}%`,
-                        backgroundColor: GEO_BAR,
-                      }}
-                    />
-                  </div>
-                </div>
-              ))}
             </div>
           </div>
         </div>
