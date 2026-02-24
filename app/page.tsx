@@ -394,7 +394,8 @@ export default function MediaKit() {
           <p className="text-neutral-600 leading-relaxed">
             Hosted by{" "}
             <span className="font-semibold text-neutral-900">Mark Brazil</span>
-            &nbsp;&mdash; CEO of IKONICK (8-figure brand backed by GaryVee, Scooter Braun; 50+ licenses
+            &nbsp;&mdash; Operator, Creator &amp; Investor.
+            CEO of IKONICK (8-figure brand backed by GaryVee; 50+ licenses
             including Michael Jordan, Muhammad Ali, Tiger Woods), former CMO at Melin (scaled to 9 figures).
             Produced by the same creative team behind projects for Leo Messi, Adidas, Nike, and MLB.
           </p>
@@ -418,11 +419,13 @@ export default function MediaKit() {
           subtitle="Last 6 months (Aug '25 – Jan '26)"
         />
 
-        <div className="grid grid-cols-3 gap-4 mb-8">
+        <div className="grid grid-cols-2 gap-4 mb-6">
           <StatCard value="86%" label="Ages 23–44" sub="Core buying demographic" />
           <StatCard value="83%" label="Male" sub="Primary audience" />
-          <StatCard value="2X" label="Episode Frequency" sub="Q1 2026" />
         </div>
+        <p className="text-sm text-neutral-600 mb-8">
+          <span className="font-semibold text-neutral-900">Starting Q1 2026</span> — releasing episodes at 2X frequency.
+        </p>
 
         <div className="bg-white rounded-2xl border border-neutral-200/60 shadow-sm p-6 mb-8">
           <h3 className="text-sm font-semibold text-neutral-500 uppercase tracking-wider mb-4">
@@ -457,7 +460,7 @@ export default function MediaKit() {
           <StatCard value="1.8M+" label="Cross-Platform Views" sub="YouTube + All Podcast Platforms" />
           <StatCard value="255K+" label="Watch Hours" sub="Long-form only" />
           <StatCard value="15.2M" label="YouTube Impressions" sub="Thumbnail impressions served" />
-          <StatCard value="22" label="Episodes Published" sub="+ 198 short-form clips" />
+          <StatCard value="220+" label="Pieces of Content" sub="22 long-form episodes + 198 clips" />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -537,7 +540,7 @@ export default function MediaKit() {
             "DTssfhdDfsQ",
             "DULkgNMDX4W",
             "DQ2TIBxknrn",
-            "DQZdXxBCfm1",
+            "DP_yUcvjXie",
           ].map((id) => (
             <div key={id} className="rounded-2xl overflow-hidden border border-neutral-200/60 shadow-sm bg-white">
               <iframe
