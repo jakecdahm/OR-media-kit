@@ -246,31 +246,6 @@ const PHOTOS = [
   { n: "5V2A3444", a: 0.667 }, { n: "L1005855", a: 1.504 },
   { n: "5V2A4785", a: 0.667 }, { n: "L1006463", a: 0.664 },
   { n: "5V2A5467", a: 0.667 }, { n: "L1005919", a: 0.664 },
-  { n: "5V2A0503", a: 0.667 }, { n: "L1004870", a: 0.664 },
-  { n: "5V2A3335", a: 0.667 }, { n: "L1006357", a: 0.664 },
-  { n: "5V2A5457", a: 0.667 }, { n: "L1005734", a: 0.664 },
-  { n: "5V2A8799", a: 0.667 }, { n: "L1006450", a: 0.664 },
-  { n: "5V2A5521", a: 0.667 }, { n: "L1005821", a: 0.664 },
-  { n: "5V2A0522", a: 0.667 }, { n: "L1004895", a: 0.664 },
-  { n: "5V2A3534", a: 0.667 }, { n: "L1006377", a: 0.664 },
-  { n: "5V2A5492", a: 0.667 }, { n: "L1005766", a: 0.664 },
-  { n: "5V2A9351", a: 0.667 }, { n: "L1006467", a: 0.664 },
-  { n: "5V2A5586", a: 0.667 }, { n: "L1005908", a: 0.664 },
-  { n: "5V2A0597", a: 0.667 }, { n: "L1004914", a: 0.664 },
-  { n: "5V2A3246", a: 0.667 }, { n: "L1006221", a: 0.664 },
-  { n: "5V2A4561", a: 0.667 }, { n: "L1005630", a: 0.664 },
-  { n: "5V2A0325", a: 0.667 }, { n: "L1006715", a: 0.667 },
-  { n: "5V2A3422", a: 0.667 }, { n: "L1005827", a: 0.664 },
-  { n: "5V2A4590", a: 0.667 }, { n: "L1005617", a: 0.664 },
-  { n: "5V2A4800", a: 0.667 }, { n: "L1006774", a: 0.664 },
-  { n: "5V2A1545", a: 0.667 }, { n: "L1006038", a: 0.664 },
-  { n: "5V2A1577", a: 0.667 }, { n: "L1006043", a: 0.664 },
-  { n: "5V2A1587", a: 0.667 }, { n: "L1006085", a: 0.664 },
-  { n: "5V2A1637", a: 0.667 }, { n: "L1006800", a: 0.667 },
-  { n: "L1003871", a: 0.664 }, { n: "L1004838", a: 0.664 },
-  { n: "L1005053", a: 0.664 }, { n: "L1005704", a: 0.664 },
-  { n: "L1005839", a: 0.664 }, { n: "L1005910", a: 0.664 },
-  { n: "L1006491", a: 0.664 }, { n: "5V2A3469", a: 0.667 },
 ];
 
 /* ==========================================================================
@@ -360,10 +335,8 @@ export default function MediaKit() {
             &amp;&nbsp;operators
           </h1>
           <p className="text-lg text-neutral-500 leading-relaxed">
-            Open Residency is the long-form podcast for founders, operators, and
-            brand builders. In 6 months, we&apos;ve generated 1.8M+ views
-            across YouTube and all podcast platforms with 472% stream
-            growth&nbsp;&mdash; and we&apos;re just getting started.
+            The long-form podcast for founders, operators, and brand builders.
+            1.8M+ views in 6 months&nbsp;&mdash; and we&apos;re just getting started.
           </p>
           <div className="flex flex-wrap gap-3 mt-6">
             <a href="https://www.openresidency.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-neutral-900 text-white text-sm font-medium hover:bg-neutral-800 transition-colors">
@@ -418,45 +391,17 @@ export default function MediaKit() {
 
         <div className="space-y-5">
           <p className="text-neutral-600 leading-relaxed">
-            Open Residency is built on a simple belief: nothing accelerates
-            growth like connecting with smart people who&apos;ve figured
-            something out you haven&apos;t.
+            Hosted by{" "}
+            <span className="font-semibold text-neutral-900">Mark Brazil</span>
+            &nbsp;&mdash; CEO of IKONICK (8-figure brand backed by GaryVee, Scooter Braun; 50+ licenses
+            including Michael Jordan, Muhammad Ali, Tiger Woods), former CMO at Melin (scaled to 9 figures).
+            Produced by the same creative team behind projects for Leo Messi, Adidas, Nike, and MLB.
           </p>
-          <p className="text-neutral-600 leading-relaxed">
-            Hosted by Mark Brazil&nbsp;&mdash; operator, investor, and
-            creator&nbsp;&mdash; the show is an extension of how he&apos;s
-            built his career: by learning from the best and putting it into
-            practice. Mark is the CEO and co-founder of{" "}
-            <span className="font-semibold text-neutral-900">IKONICK</span>,
-            an 8-figure art licensing brand backed by GaryVee, Scooter Braun,
-            and others, holding 50+ licenses including Michael Jordan, Muhammad
-            Ali, Tiger Woods, Monopoly, and Peanuts. Previously, he served as
-            CMO and Partner at{" "}
-            <span className="font-semibold text-neutral-900">Melin</span>,
-            helping scale the premium headwear brand to 9 figures.
+          <p className="text-neutral-900 font-semibold leading-relaxed">
+            A partnership with Open Residency is not just media
+            placement&nbsp;&mdash; it&apos;s a relationship with Mark and
+            his network as a business development and sales machine.
           </p>
-          <p className="text-neutral-600 leading-relaxed">
-            Now, after nearly a decade of building, Mark is sitting down with
-            the operators, marketers, creators, and specialists he wants to
-            learn from&nbsp;&mdash; diving deep into the tactical stuff. Not
-            just what they&apos;ve built and why, but exactly how they&apos;ve
-            done it.
-          </p>
-          <p className="text-neutral-600 leading-relaxed">
-            Open Residency is produced and owned by Mark&apos;s internal
-            creative agency&nbsp;&mdash; the same team behind projects for{" "}
-            <span className="font-semibold text-neutral-900">
-              Leo Messi, Adidas, Nike, and MLB
-            </span>
-            . This show is their sole focus.
-          </p>
-          <div className="pt-2">
-            <p className="text-neutral-900 font-semibold leading-relaxed">
-              A partnership with Open Residency is not just media
-              placement&nbsp;&mdash; it&apos;s a relationship with Mark and
-              his network as a business development and sales machine.
-            </p>
-          </div>
         </div>
       </section>
 
@@ -465,43 +410,49 @@ export default function MediaKit() {
         <hr className="border-neutral-200" />
       </div>
 
-      {/* ── BY THE NUMBERS ────────────────────────────────────────── */}
+      {/* ── AUDIENCE & PERFORMANCE ─────────────────────────────────── */}
       <section className="max-w-6xl mx-auto px-6 py-16">
         <SectionHeader
-          title="By The Numbers"
-          subtitle="Cross-platform performance — Last 6 months (Aug '25 – Jan '26)"
+          title="Audience & Performance"
+          subtitle="Last 6 months (Aug '25 – Jan '26)"
         />
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-          <StatCard
-            value="255K+"
-            label="Watch Hours"
-            sub="Last 6 months"
-          />
-          <StatCard
-            value="308K"
-            label="Peak Month Views"
-            sub="October 2025"
-          />
-          <StatCard
-            value="8x"
-            label="Follower Growth"
-            sub="Spotify: 669 → 5,371"
-          />
-          <StatCard
-            value="22"
-            label="Long-Form Episodes"
-            sub="+ 198 short-form clips"
-          />
+          <StatCard value="86%" label="Ages 23–44" sub="Core buying demographic" />
+          <StatCard value="83%" label="Male" sub="Primary audience" />
+          <StatCard value="255K+" label="Watch Hours" sub="Long-form only" />
+          <StatCard value="22" label="Long-Form Episodes" sub="+ 198 short-form clips" />
         </div>
 
-        <div className="bg-white rounded-2xl border border-neutral-200/60 shadow-sm p-5 inline-flex items-center gap-2">
-          <span className="text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full bg-neutral-900 text-white">
-            Q1 2026
-          </span>
-          <span className="text-sm text-neutral-600">
-            Doubling episode frequency&nbsp;&mdash; 2X launches per month
-          </span>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          <div className="bg-white rounded-2xl border border-neutral-200/60 shadow-sm p-6">
+            <h3 className="text-sm font-semibold text-neutral-500 uppercase tracking-wider mb-4">
+              Age Distribution
+            </h3>
+            <div className="h-48">
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart data={AGE_DATA} layout="vertical">
+                  <XAxis type="number" tick={{ fill: CHART_GRAY, fontSize: 11 }} axisLine={false} tickLine={false} tickFormatter={(v) => `${v}%`} />
+                  <YAxis type="category" dataKey="range" tick={{ fill: "#666", fontSize: 12 }} axisLine={false} tickLine={false} width={50} />
+                  <Tooltip content={<CustomTooltip suffix="%" />} />
+                  <Bar dataKey="value" fill={CHART_BLACK} radius={[0, 4, 4, 0]} barSize={14} />
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-4">
+            <StatCard value="2M+" label="Monthly Impressions" sub="Instagram short-form" />
+            <StatCard value="100K+" label="Combined Followers" sub="@openresidency + @markbrazil" />
+            <div className="bg-white rounded-2xl border border-neutral-200/60 shadow-sm p-5 flex items-center gap-2">
+              <span className="text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full bg-neutral-900 text-white flex-shrink-0">
+                Q1 2026
+              </span>
+              <span className="text-sm text-neutral-600">
+                2X episode frequency
+              </span>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -513,22 +464,9 @@ export default function MediaKit() {
       {/* ── SHORT-FORM ──────────────────────────────────────────── */}
       <section className="max-w-6xl mx-auto px-6 py-16">
         <SectionHeader
-          title="Short-Form"
+          title="Short-Form Content"
           subtitle="Instagram Reels — @openresidency + @markbrazil"
         />
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
-          <StatCard
-            value="2M+"
-            label="Monthly Impressions"
-            sub="Instagram short-form"
-          />
-          <StatCard
-            value="100K+"
-            label="Combined Followers"
-            sub="@openresidency + @markbrazil"
-          />
-        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {[
@@ -545,66 +483,6 @@ export default function MediaKit() {
               />
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* ── DIVIDER ─────────────────────────────────────────────────── */}
-      <div className="max-w-6xl mx-auto px-6">
-        <hr className="border-neutral-200" />
-      </div>
-
-      {/* ── CORE AUDIENCE ─────────────────────────────────────────── */}
-      <section className="max-w-6xl mx-auto px-6 py-16">
-        <SectionHeader
-          title="Core Audience"
-          subtitle="Who watches and listens to Open Residency"
-        />
-
-        <p className="text-lg text-neutral-500 leading-relaxed mb-10">
-          Our audience is overwhelmingly male (83%), ages 23&ndash;44 (86%),
-          and concentrated in English-speaking markets. They are founders,
-          operators, brand builders, and aspiring entrepreneurs&nbsp;&mdash; the
-          exact demographic that premium DTC, SaaS, and lifestyle brands want
-          to reach.
-        </p>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-          {[
-            { v: "86%", l: "Ages 23–44", s: "Core buying demographic" },
-            { v: "83%", l: "Male", s: "Primary audience" },
-            { v: "300K+", l: "Hours Consumed", s: "YouTube + Podcast Platforms" },
-          ].map((stat) => (
-            <div
-              key={stat.l}
-              className="bg-white rounded-2xl p-6 shadow-sm border border-neutral-200/60 text-center"
-            >
-              <p className="text-4xl font-bold tracking-tight text-neutral-900">
-                {stat.v}
-              </p>
-              <p className="text-sm font-medium text-neutral-600 mt-1">
-                {stat.l}
-              </p>
-              <p className="text-xs text-neutral-400 mt-1">{stat.s}</p>
-            </div>
-          ))}
-        </div>
-
-        <div className="max-w-md">
-          <div className="bg-white rounded-2xl border border-neutral-200/60 shadow-sm p-6">
-            <h3 className="text-sm font-semibold text-neutral-500 uppercase tracking-wider mb-4">
-              Age Distribution
-            </h3>
-            <div className="h-48">
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={AGE_DATA} layout="vertical">
-                  <XAxis type="number" tick={{ fill: CHART_GRAY, fontSize: 11 }} axisLine={false} tickLine={false} tickFormatter={(v) => `${v}%`} />
-                  <YAxis type="category" dataKey="range" tick={{ fill: "#666", fontSize: 12 }} axisLine={false} tickLine={false} width={50} />
-                  <Tooltip content={<CustomTooltip suffix="%" />} />
-                  <Bar dataKey="value" fill={CHART_BLACK} radius={[0, 4, 4, 0]} barSize={14} />
-                </BarChart>
-              </ResponsiveContainer>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -698,6 +576,98 @@ export default function MediaKit() {
         </div>
       </section>
 
+      {/* ── DIVIDER ─────────────────────────────────────────────────── */}
+      <div className="max-w-6xl mx-auto px-6">
+        <hr className="border-neutral-200" />
+      </div>
+
+      {/* ── PARTNERSHIP OPTIONS ─────────────────────────────────────── */}
+      <section className="max-w-6xl mx-auto px-6 py-16">
+        <SectionHeader
+          title="Partnership Options"
+          subtitle="Flexible packages tailored to your goals"
+        />
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+          {[
+            {
+              tier: "Single Episode",
+              price: "[TBD]",
+              features: [
+                "1x host-read ad (60-90s)",
+                "Social post on @openresidency",
+                "Logo in episode description",
+                "Performance report",
+              ],
+            },
+            {
+              tier: "Monthly",
+              price: "[TBD]",
+              popular: true,
+              features: [
+                "All episodes that month",
+                "Host-read ad + product placement",
+                "Instagram Reel feature",
+                "Dedicated social amplification",
+                "Monthly performance report",
+              ],
+            },
+            {
+              tier: "Quarterly",
+              price: "[TBD]",
+              features: [
+                "All episodes (3 months)",
+                "Custom branded segment",
+                "Product placement + host-read",
+                "Full social package (IG, YT, X)",
+                "Guest appearance opportunity",
+                "Quarterly strategy review",
+              ],
+            },
+          ].map((pkg) => (
+            <div
+              key={pkg.tier}
+              className={`bg-white rounded-2xl p-6 shadow-sm border ${
+                pkg.popular
+                  ? "border-neutral-900 ring-1 ring-neutral-900"
+                  : "border-neutral-200/60"
+              } flex flex-col`}
+            >
+              {pkg.popular && (
+                <span className="text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full bg-neutral-900 text-white self-start mb-3">
+                  Most Popular
+                </span>
+              )}
+              <h3 className="text-lg font-bold text-neutral-900">{pkg.tier}</h3>
+              <p className="text-2xl font-bold text-neutral-900 mt-2 mb-4">
+                {pkg.price}
+                <span className="text-sm font-normal text-neutral-400"> / package</span>
+              </p>
+              <ul className="space-y-2 flex-1">
+                {pkg.features.map((f) => (
+                  <li key={f} className="flex items-start gap-2 text-sm text-neutral-600">
+                    <span className="text-neutral-900 mt-0.5">&#10003;</span>
+                    {f}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        <div className="text-center">
+          <a
+            href="mailto:mark@openresidency.com"
+            className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-neutral-900 text-white text-sm font-semibold hover:bg-neutral-800 transition-colors"
+          >
+            Let&apos;s Talk
+          </a>
+          <p className="text-xs text-neutral-400 mt-3">
+            mark@openresidency.com
+          </p>
+        </div>
+      </section>
+
       {/* ── PHOTO GRID ──────────────────────────────────────────────── */}
       <section className="max-w-6xl mx-auto px-6 py-16">
         <div className="gallery-grid">
@@ -775,9 +745,17 @@ export default function MediaKit() {
             height={20}
             className="h-4 w-auto opacity-40"
           />
-          <p className="text-xs text-neutral-400 text-center md:text-right">
-            Last updated February 2026
-          </p>
+          <div className="flex items-center gap-4">
+            <a
+              href="mailto:mark@openresidency.com"
+              className="text-xs font-medium text-neutral-600 hover:text-neutral-900 transition-colors"
+            >
+              mark@openresidency.com
+            </a>
+            <p className="text-xs text-neutral-400">
+              Updated Feb 2026
+            </p>
+          </div>
         </div>
       </footer>
     </main>
