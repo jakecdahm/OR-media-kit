@@ -476,8 +476,11 @@ export default function MediaKit() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {[
             { id: "-1aSoZ1ffTg", guest: "Robert Greene", note: "Author, 48 Laws of Power" },
-            { id: "VcqQmrGqthg", guest: "Kane Kallaway", note: "Creator" },
             { id: "EVDQ1MijHbk", guest: "Dan Koe", note: "Creator" },
+            { id: "Yl_HLGoWWJE", guest: "Samir", note: "Colin and Samir" },
+            { id: "6tTLUuD06AY", guest: "George Heaton", note: "Represent, 9 figures" },
+            { id: "ccGFIAfyNyg", guest: "Kent Yoshimura", note: "NeuroGum, 9 figures" },
+            { id: "2eGds8kLszE", guest: "Sean Frank", note: "Ridge, 9 figures" },
           ].map((ep) => (
             <div key={ep.id} className="rounded-2xl overflow-hidden border border-neutral-200/60 shadow-sm bg-white">
               <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
