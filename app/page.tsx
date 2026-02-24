@@ -466,6 +466,13 @@ export default function MediaKit() {
           subtitle="Full episodes on YouTube"
         />
 
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+          <StatCard value="1.8M+" label="Cross-Platform Views" sub="YouTube + All Podcast Platforms" />
+          <StatCard value="255K+" label="Watch Hours" sub="Long-form only" />
+          <StatCard value="15.2M" label="YouTube Impressions" sub="Thumbnail impressions served" />
+          <StatCard value="22" label="Episodes Published" sub="+ 198 short-form clips" />
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {[
             { id: "-1aSoZ1ffTg", guest: "Robert Greene", note: "Author, 48 Laws of Power" },
@@ -512,6 +519,9 @@ export default function MediaKit() {
             "DRkNaS3DldC",
             "DR4zLzjDul-",
             "DTssfhdDfsQ",
+            "DULkgNMDX4W",
+            "DQ2TIBxknrn",
+            "DQZdXxBCfm1",
           ].map((id) => (
             <div key={id} className="rounded-2xl overflow-hidden border border-neutral-200/60 shadow-sm bg-white">
               <iframe
