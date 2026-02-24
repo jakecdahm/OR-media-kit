@@ -335,8 +335,8 @@ export default function MediaKit() {
             &amp;&nbsp;operators
           </h1>
           <p className="text-lg text-neutral-500 leading-relaxed">
-            The long-form podcast for founders, operators, and brand builders.
-            1.8M+ views in 6 months&nbsp;&mdash; and we&apos;re just getting started.
+            The long-form podcast for business operators and brand builders&nbsp;&mdash;
+            1.8M+ views in 6 months, and we&apos;re just getting started.
           </p>
           <div className="flex flex-wrap gap-3 mt-6">
             <a href="https://www.openresidency.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-neutral-900 text-white text-sm font-medium hover:bg-neutral-800 transition-colors">
