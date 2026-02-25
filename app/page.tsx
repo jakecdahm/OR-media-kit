@@ -5,11 +5,22 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import {
   BarChart,
   Bar,
+  AreaChart,
+  Area,
   XAxis,
   YAxis,
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
+
+const GROWTH_DATA = [
+  { month: "Aug '25", views: 107000 },
+  { month: "Sep '25", views: 175000 },
+  { month: "Oct '25", views: 483000 },
+  { month: "Nov '25", views: 744000 },
+  { month: "Dec '25", views: 952000 },
+  { month: "Jan '26", views: 1234000 },
+];
 
 const AGE_DATA = [
   { range: "18–22", value: 5.1 },
@@ -372,6 +383,43 @@ export default function MediaKit() {
             placement&nbsp;&mdash; it&apos;s a relationship with Mark and
             his network as a business development and sales machine.
           </p>
+        </div>
+
+        <div className="bg-white rounded-2xl border border-neutral-200/60 shadow-sm p-6 mt-8">
+          <h3 className="text-sm font-semibold text-neutral-500 uppercase tracking-wider mb-1">
+            Cumulative Cross-Platform Views
+          </h3>
+          <p className="text-xs text-neutral-400 mb-4">YouTube + Spotify (Aug &apos;25 – Jan &apos;26)</p>
+          <div className="h-56">
+            <ResponsiveContainer width="100%" height="100%">
+              <AreaChart data={GROWTH_DATA}>
+                <defs>
+                  <linearGradient id="viewsGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor={CHART_BLACK} stopOpacity={0.15} />
+                    <stop offset="95%" stopColor={CHART_BLACK} stopOpacity={0} />
+                  </linearGradient>
+                </defs>
+                <XAxis dataKey="month" tick={{ fill: CHART_GRAY, fontSize: 11 }} axisLine={false} tickLine={false} />
+                <YAxis tick={{ fill: CHART_GRAY, fontSize: 11 }} axisLine={false} tickLine={false} tickFormatter={(v: number) => v >= 1000000 ? `${(v / 1000000).toFixed(1)}M` : `${(v / 1000).toFixed(0)}K`} />
+                {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+                <Tooltip
+                  content={({ active, payload, label }: any) => {
+                    if (active && payload && payload.length) {
+                      const v = payload[0].value;
+                      return (
+                        <div className="bg-white border border-neutral-200 rounded-lg px-3 py-2 shadow-lg text-sm">
+                          <p className="text-neutral-500 text-xs mb-0.5">{label}</p>
+                          <p className="font-semibold text-neutral-900">{v >= 1000000 ? `${(v / 1000000).toFixed(2)}M` : `${(v / 1000).toFixed(0)}K`} views</p>
+                        </div>
+                      );
+                    }
+                    return null;
+                  }}
+                />
+                <Area type="monotone" dataKey="views" stroke={CHART_BLACK} strokeWidth={2} fill="url(#viewsGrad)" />
+              </AreaChart>
+            </ResponsiveContainer>
+          </div>
         </div>
       </section>
 
