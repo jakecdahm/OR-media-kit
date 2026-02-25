@@ -428,20 +428,11 @@ export default function MediaKit() {
 
         <div className="mt-8 columns-1 md:columns-2 gap-x-8">
           {[
-            "Followers are growing.",
-            "Views are growing.",
-            "Email subscribers are compounding.",
-            "Episode cadence is increasing.",
-            "The team is expanding.",
-            "Guest caliber is rising.",
-            "Audience caliber is rising.",
-            "Our funnel is improving.",
-            "Sponsor demand is growing.",
-            "Sponsor inventory is tightening.",
+            "Audience is growing.",
+            "Episode cadence is accelerating.",
+            "Guest caliber keeps rising.",
+            "Sponsor demand is outpacing inventory.",
             "Distribution is compounding.",
-            "Cultural relevance is expanding.",
-            "Data sophistication is improving.",
-            "Production quality is elevating.",
             "Brand equity is strengthening.",
           ].map((line) => (
             <p key={line} className="text-sm text-neutral-600 leading-relaxed py-1.5 border-b border-neutral-100 last:border-0">
