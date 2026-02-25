@@ -2,6 +2,27 @@
 
 import Image from "next/image";
 import { useState, useEffect, useCallback, useRef } from "react";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+  ResponsiveContainer,
+} from "recharts";
+
+const AGE_DATA = [
+  { range: "18–22", value: 5.1 },
+  { range: "23–27", value: 22.3 },
+  { range: "28–34", value: 38.2 },
+  { range: "35–44", value: 25.8 },
+  { range: "45–59", value: 7.3 },
+  { range: "60+", value: 1.1 },
+];
+
+const CHART_BLACK = "#1a1a1a";
+const CHART_GRAY = "#888";
+
 const PUBLISHED_GUESTS = [
   { name: "Robert Greene", company: "Author", note: "48 Laws of Power", url: "https://www.youtube.com/watch?v=-1aSoZ1ffTg" },
   { name: "Dee Murthy", company: "GHST", note: "9 figures", url: "https://www.youtube.com/@openresidency" },
@@ -377,8 +398,8 @@ export default function MediaKit() {
               desc: "Scaling a brand or company right now. They\u2019re looking for the strategies and principles that are working today \u2014 not theory from ten years ago.",
             },
             {
-              segment: "Investors & Advisors",
-              desc: "Staying connected to what\u2019s next. They use the show to spot trends, discover founders, and stay sharp on the operator mindset.",
+              segment: "Brand Builders",
+              desc: "CMOs, creative directors, and marketing leads studying how the best brands are being built right now \u2014 from positioning to content to community.",
             },
           ].map((s) => (
             <div
@@ -398,6 +419,35 @@ export default function MediaKit() {
         <p className="text-sm text-neutral-600 mb-8">
           <span className="font-semibold text-neutral-900">Starting Q1 2026</span> — releasing episodes at 2X frequency.
         </p>
+
+        <div className="bg-white rounded-2xl border border-neutral-200/60 shadow-sm p-6">
+          <h3 className="text-sm font-semibold text-neutral-500 uppercase tracking-wider mb-4">
+            Age Distribution
+          </h3>
+          <div className="h-48">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart data={AGE_DATA} layout="vertical">
+                <XAxis type="number" tick={{ fill: CHART_GRAY, fontSize: 11 }} axisLine={false} tickLine={false} tickFormatter={(v: number) => `${v}%`} />
+                <YAxis type="category" dataKey="range" tick={{ fill: "#666", fontSize: 12 }} axisLine={false} tickLine={false} width={50} />
+                {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+                <Tooltip
+                  content={({ active, payload, label }: any) => {
+                    if (active && payload && payload.length) {
+                      return (
+                        <div className="bg-white border border-neutral-200 rounded-lg px-3 py-2 shadow-lg text-sm">
+                          <p className="text-neutral-500 text-xs mb-0.5">{label}</p>
+                          <p className="font-semibold text-neutral-900">{payload[0].value.toLocaleString()}%</p>
+                        </div>
+                      );
+                    }
+                    return null;
+                  }}
+                />
+                <Bar dataKey="value" fill={CHART_BLACK} radius={[0, 4, 4, 0]} barSize={14} />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
       </section>
 
       {/* ── DIVIDER ─────────────────────────────────────────────────── */}
