@@ -685,13 +685,12 @@ export default function MediaKit() {
         />
 
         <div className="bg-white rounded-2xl border border-neutral-200/60 shadow-sm p-8 md:p-10 mb-10">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 items-center">
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6 items-center">
             {[
               { name: "COMCAST", category: "CTV" },
               { name: "BEEHIIV", category: "Email" },
               { name: "MANYCHAT", category: "Messaging" },
               { name: "POPPY.AI", category: "AI" },
-              { name: "K&L GATES", category: "Legal" },
             ].map((p) => (
               <div key={p.name} className="flex flex-col items-center justify-center py-3">
                 <span className="text-base font-bold tracking-tight text-neutral-800">
