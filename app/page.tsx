@@ -2,28 +2,6 @@
 
 import Image from "next/image";
 import { useState, useEffect, useCallback, useRef } from "react";
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  Tooltip,
-  ResponsiveContainer,
-} from "recharts";
-
-/* ==========================================================================
-   DATA
-   ========================================================================== */
-
-const AGE_DATA = [
-  { range: "18–22", value: 5.1 },
-  { range: "23–27", value: 22.3 },
-  { range: "28–34", value: 38.2 },
-  { range: "35–44", value: 25.8 },
-  { range: "45–59", value: 7.3 },
-  { range: "60+", value: 1.1 },
-];
-
 const PUBLISHED_GUESTS = [
   { name: "Robert Greene", company: "Author", note: "48 Laws of Power", url: "https://www.youtube.com/watch?v=-1aSoZ1ffTg" },
   { name: "Dee Murthy", company: "GHST", note: "9 figures", url: "https://www.youtube.com/@openresidency" },
@@ -84,44 +62,8 @@ const UPCOMING_GUESTS = [
 ];
 
 /* ==========================================================================
-   COLORS
-   ========================================================================== */
-
-const CHART_BLACK = "#1a1a1a";
-const CHART_GRAY = "#888";
-
-/* ==========================================================================
-   HELPERS
-   ========================================================================== */
-
-function fmtFull(n: number): string {
-  return n.toLocaleString();
-}
-
-/* ==========================================================================
    SHARED COMPONENTS
    ========================================================================== */
-
-function CustomTooltip({
-  active,
-  payload,
-  label,
-  suffix = "",
-}: // eslint-disable-next-line @typescript-eslint/no-explicit-any
-any) {
-  if (active && payload && payload.length) {
-    return (
-      <div className="bg-white border border-neutral-200 rounded-lg px-3 py-2 shadow-lg text-sm">
-        <p className="text-neutral-500 text-xs mb-0.5">{label}</p>
-        <p className="font-semibold text-neutral-900">
-          {fmtFull(payload[0].value)}
-          {suffix}
-        </p>
-      </div>
-    );
-  }
-  return null;
-}
 
 function StatCard({
   value,
@@ -400,6 +342,11 @@ export default function MediaKit() {
             Produced by the same creative team behind projects for Leo Messi, Adidas, Nike, and MLB.
           </p>
           <p className="text-neutral-900 font-semibold leading-relaxed">
+            The mission: bring the stories, tactics, and principles of
+            what is working right now&nbsp;&mdash; straight from the founders
+            and operators doing it.
+          </p>
+          <p className="text-neutral-600 leading-relaxed">
             A partnership with Open Residency is not just media
             placement&nbsp;&mdash; it&apos;s a relationship with Mark and
             his network as a business development and sales machine.
@@ -415,9 +362,34 @@ export default function MediaKit() {
       {/* ── AUDIENCE PROFILE ──────────────────────────────────────── */}
       <section className="max-w-6xl mx-auto px-6 py-16">
         <SectionHeader
-          title="Audience Profile"
+          title="Who Listens"
           subtitle="Last 6 months (Aug '25 – Jan '26)"
         />
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+          {[
+            {
+              segment: "Aspiring Founders",
+              desc: "Learning from those who\u2019ve done it before they take the leap. They come for the playbooks, tactics, and real talk on what it actually takes.",
+            },
+            {
+              segment: "Active Operators",
+              desc: "Scaling a brand or company right now. They\u2019re looking for the strategies and principles that are working today \u2014 not theory from ten years ago.",
+            },
+            {
+              segment: "Investors & Advisors",
+              desc: "Staying connected to what\u2019s next. They use the show to spot trends, discover founders, and stay sharp on the operator mindset.",
+            },
+          ].map((s) => (
+            <div
+              key={s.segment}
+              className="bg-white rounded-2xl border border-neutral-200/60 shadow-sm p-6"
+            >
+              <p className="font-bold text-neutral-900 mb-2">{s.segment}</p>
+              <p className="text-sm text-neutral-500 leading-relaxed">{s.desc}</p>
+            </div>
+          ))}
+        </div>
 
         <div className="grid grid-cols-2 gap-4 mb-6">
           <StatCard value="86%" label="Ages 23–44" sub="Core buying demographic" />
@@ -426,22 +398,6 @@ export default function MediaKit() {
         <p className="text-sm text-neutral-600 mb-8">
           <span className="font-semibold text-neutral-900">Starting Q1 2026</span> — releasing episodes at 2X frequency.
         </p>
-
-        <div className="bg-white rounded-2xl border border-neutral-200/60 shadow-sm p-6 mb-8">
-          <h3 className="text-sm font-semibold text-neutral-500 uppercase tracking-wider mb-4">
-            Age Distribution
-          </h3>
-          <div className="h-48">
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={AGE_DATA} layout="vertical">
-                <XAxis type="number" tick={{ fill: CHART_GRAY, fontSize: 11 }} axisLine={false} tickLine={false} tickFormatter={(v) => `${v}%`} />
-                <YAxis type="category" dataKey="range" tick={{ fill: "#666", fontSize: 12 }} axisLine={false} tickLine={false} width={50} />
-                <Tooltip content={<CustomTooltip suffix="%" />} />
-                <Bar dataKey="value" fill={CHART_BLACK} radius={[0, 4, 4, 0]} barSize={14} />
-              </BarChart>
-            </ResponsiveContainer>
-          </div>
-        </div>
       </section>
 
       {/* ── DIVIDER ─────────────────────────────────────────────────── */}
