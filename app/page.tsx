@@ -364,8 +364,8 @@ export default function MediaKit() {
           </p>
           <p className="text-neutral-900 font-semibold leading-relaxed">
             The mission: bring the stories, tactics, and principles of
-            what is working right now&nbsp;&mdash; straight from the founders
-            and operators doing it.
+            what is working right now&nbsp;&mdash; straight from the operators
+            and brand builders doing it.
           </p>
           <p className="text-neutral-600 leading-relaxed">
             A partnership with Open Residency is not just media
