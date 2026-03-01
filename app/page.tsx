@@ -31,6 +31,17 @@ const AGE_DATA = [
   { range: "60+", value: 1.1 },
 ];
 
+const OVERLAP_DATA = [
+  { show: "The Diary Of A CEO with Steven Bartlett", value: 53 },
+  { show: "Modern Wisdom", value: 40 },
+  { show: "The Joe Rogan Experience", value: 30 },
+  { show: "The Game with Alex Hormozi", value: 22 },
+  { show: "Huberman Lab", value: 21 },
+  { show: "BigDeal (Codie Sanchez)", value: 13 },
+  { show: "My First Million", value: 12 },
+  { show: "Founders (David Senra)", value: 12 },
+];
+
 const CHART_BLACK = "#1a1a1a";
 const CHART_GRAY = "#888";
 
@@ -521,33 +532,31 @@ export default function MediaKit() {
         </p>
 
         <div className="bg-white rounded-2xl border border-neutral-200/60 shadow-sm p-6 mt-8">
-          <h3 className="text-sm font-semibold text-neutral-500 uppercase tracking-wider mb-5">
+          <h3 className="text-sm font-semibold text-neutral-500 uppercase tracking-wider mb-4">
             Audience Overlap
           </h3>
-          <p className="text-xs text-neutral-400 mb-4">% of audience that also listens to this show (Last 90 days, as of Dec 31 2025)</p>
-          <div className="space-y-3">
-            {[
-              { rank: 1, show: "The Diary Of A CEO with Steven Bartlett", pct: 53 },
-              { rank: 2, show: "Modern Wisdom", pct: 40 },
-              { rank: 3, show: "The Joe Rogan Experience", pct: 30 },
-              { rank: 4, show: "The Game with Alex Hormozi", pct: 22 },
-              { rank: 5, show: "Huberman Lab", pct: 21 },
-              { rank: 6, show: "BigDeal (Codie Sanchez)", pct: 13 },
-              { rank: 8, show: "My First Million", pct: 12 },
-              { rank: 9, show: "Founders (David Senra)", pct: 12 },
-            ].map((s) => (
-              <div key={s.rank} className="flex items-center gap-3">
-                <span className="text-xs font-medium text-neutral-400 w-5 text-right shrink-0">{s.rank}</span>
-                <span className="text-sm font-medium text-neutral-800 w-64 shrink-0 truncate">{s.show}</span>
-                <div className="flex-1 h-4 bg-neutral-100 rounded-full overflow-hidden">
-                  <div
-                    className="h-full rounded-full"
-                    style={{ width: `${(s.pct / 53) * 100}%`, backgroundColor: "#b4b0d6" }}
-                  />
-                </div>
-                <span className="text-sm font-bold text-neutral-900 w-10 text-right shrink-0">{s.pct}%</span>
-              </div>
-            ))}
+          <div className="h-72">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart data={OVERLAP_DATA} layout="vertical">
+                <XAxis type="number" tick={{ fill: CHART_GRAY, fontSize: 11 }} axisLine={false} tickLine={false} tickFormatter={(v: number) => `${v}%`} />
+                <YAxis type="category" dataKey="show" tick={{ fill: "#666", fontSize: 12 }} axisLine={false} tickLine={false} width={260} />
+                {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+                <Tooltip
+                  content={({ active, payload, label }: any) => {
+                    if (active && payload && payload.length) {
+                      return (
+                        <div className="bg-white border border-neutral-200 rounded-lg px-3 py-2 shadow-lg text-sm">
+                          <p className="text-neutral-500 text-xs mb-0.5">{label}</p>
+                          <p className="font-semibold text-neutral-900">{payload[0].value}%</p>
+                        </div>
+                      );
+                    }
+                    return null;
+                  }}
+                />
+                <Bar dataKey="value" fill={CHART_BLACK} radius={[0, 4, 4, 0]} barSize={14} />
+              </BarChart>
+            </ResponsiveContainer>
           </div>
         </div>
       </section>
