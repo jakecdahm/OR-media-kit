@@ -515,6 +515,41 @@ export default function MediaKit() {
             </ResponsiveContainer>
           </div>
         </div>
+
+        <p className="text-center text-lg font-semibold text-neutral-900 mt-10 mb-0">
+          Where Business Meets Culture
+        </p>
+
+        <div className="bg-white rounded-2xl border border-neutral-200/60 shadow-sm p-6 mt-8">
+          <h3 className="text-sm font-semibold text-neutral-500 uppercase tracking-wider mb-5">
+            Audience Overlap
+          </h3>
+          <p className="text-xs text-neutral-400 mb-4">% of audience that also listens to this show (Last 90 days, as of Dec 31 2025)</p>
+          <div className="space-y-3">
+            {[
+              { rank: 1, show: "The Diary Of A CEO with Steven Bartlett", pct: 53 },
+              { rank: 2, show: "Modern Wisdom", pct: 40 },
+              { rank: 3, show: "The Joe Rogan Experience", pct: 30 },
+              { rank: 4, show: "The Game with Alex Hormozi", pct: 22 },
+              { rank: 5, show: "Huberman Lab", pct: 21 },
+              { rank: 6, show: "BigDeal (Codie Sanchez)", pct: 13 },
+              { rank: 8, show: "My First Million", pct: 12 },
+              { rank: 9, show: "Founders (David Senra)", pct: 12 },
+            ].map((s) => (
+              <div key={s.rank} className="flex items-center gap-3">
+                <span className="text-xs font-medium text-neutral-400 w-5 text-right shrink-0">{s.rank}</span>
+                <span className="text-sm font-medium text-neutral-800 w-64 shrink-0 truncate">{s.show}</span>
+                <div className="flex-1 h-4 bg-neutral-100 rounded-full overflow-hidden">
+                  <div
+                    className="h-full rounded-full"
+                    style={{ width: `${(s.pct / 53) * 100}%`, backgroundColor: "#b4b0d6" }}
+                  />
+                </div>
+                <span className="text-sm font-bold text-neutral-900 w-10 text-right shrink-0">{s.pct}%</span>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* ── DIVIDER ─────────────────────────────────────────────────── */}
