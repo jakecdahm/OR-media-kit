@@ -292,6 +292,25 @@ export default function CadencePage() {
         <hr className="border-neutral-200" />
       </div>
 
+      {/* ── SIZZLE REEL ─────────────────────────────────────────────── */}
+      <section className="max-w-6xl mx-auto px-6 py-16">
+        <div className="rounded-2xl overflow-hidden border border-neutral-200/60 shadow-sm bg-white">
+          <div className="relative w-full" style={{ padding: "56.25% 0 0 0" }}>
+            <iframe
+              src="https://player.vimeo.com/video/1174456534?h=be2d0f7734&autoplay=1&loop=1&muted=1&controls=0&background=1"
+              className="absolute top-0 left-0 w-full h-full border-0"
+              allow="autoplay; fullscreen; picture-in-picture"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* ── DIVIDER ─────────────────────────────────────────────────── */}
+      <div className="max-w-6xl mx-auto px-6">
+        <hr className="border-neutral-200" />
+      </div>
+
       {/* ── PARTNERSHIP SCOPE ────────────────────────────────────────── */}
       <section className="max-w-6xl mx-auto px-6 py-16">
         <SectionHeader title="Partnership Scope" subtitle="What Cadence gets" />
