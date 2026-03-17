@@ -178,9 +178,6 @@ export default function CadencePage() {
             <br />
             compounding value
           </h1>
-          <p className="text-lg text-neutral-500 leading-relaxed max-w-2xl">
-            1.8M+ views in 6 months, and we&rsquo;re just getting started.
-          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -342,7 +339,6 @@ export default function CadencePage() {
             <div className="flex-1">
               <p className="text-2xl font-bold tracking-tight text-neutral-900">213K</p>
               <p className="text-sm text-neutral-500">monthly back-catalog views</p>
-              <p className="text-xs text-neutral-400 mt-0.5">Robert Greene episode alone drove 60K views (Feb 8 – Mar 8)</p>
             </div>
           </div>
         </div>
@@ -383,7 +379,7 @@ export default function CadencePage() {
               Content Integration
             </p>
             <FeatureItem text="30 Ad Reads" note="Long-form, organic embeds across episodes" />
-            <FeatureItem text="On-Screen Logo Burn-In" note="Premium format — 3 slots bottom-right, 30+ episodes min. Unsold inventory deferred to equity partners." />
+            <FeatureItem text="30 On-Screen Logo Burn-In" note="Premium format — 3 slots bottom-right, 30+ episodes min. Unsold inventory deferred to equity partners." />
             <FeatureItem text="On-Table Product Placement" note="Physical product on set, as many episodes as possible" />
             <FeatureItem text="Guest Integration" note="Ask favorite flavor beforehand, gift day-of, content + warm intros where it makes sense" />
           </div>
@@ -405,16 +401,16 @@ export default function CadencePage() {
             <p className="text-xs font-semibold tracking-[0.15em] uppercase text-neutral-400 mb-3">
               Network &amp; Access
             </p>
-            <FeatureItem text="Warm Intros" note="Curated, strategic — Mark's network is yours" />
-            <FeatureItem text="Gifting" note="Curated list of high-value recipients" />
-            <FeatureItem text="HoldCo First Look" note="Early access to ventures on Mark's side" />
-            <FeatureItem text="Direct Ecomm Access for Matty" note="Mark's ecomm plugs, direct line" />
+            <FeatureItem text="Warm Intros" note="Up to you here" />
+            <FeatureItem text="Gifting" note="Up to you here" />
+            <FeatureItem text="HoldCo First Look" note="Up to you here" />
+            <FeatureItem text="Direct Ecomm Access for Matty" note="Up to you here" />
           </div>
 
-          {/* Perks */}
+          {/* Other */}
           <div className="bg-white rounded-2xl border border-neutral-200/60 shadow-sm p-6">
             <p className="text-xs font-semibold tracking-[0.15em] uppercase text-neutral-400 mb-3">
-              Perks
+              Other
             </p>
             <FeatureItem text="Product at Wholesale" note="50% off your low price during term" />
           </div>
@@ -435,23 +431,23 @@ export default function CadencePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             <div>
-              <p className="text-3xl md:text-4xl font-bold tracking-tight">100K</p>
-              <p className="text-sm text-neutral-400 mt-1">Shares</p>
+              <p className="text-3xl md:text-4xl font-bold tracking-tight">$100K</p>
+              <p className="text-sm text-neutral-400 mt-1">Shares @ 40M Strike Price</p>
             </div>
             <div>
               <p className="text-3xl md:text-4xl font-bold tracking-tight">$300K</p>
-              <p className="text-sm text-neutral-400 mt-1">Current Value</p>
+              <p className="text-sm text-neutral-400 mt-1">Current Value, Assumption</p>
             </div>
             <div>
               <p className="text-3xl md:text-4xl font-bold tracking-tight">$120M</p>
-              <p className="text-sm text-neutral-400 mt-1">Company Valuation</p>
+              <p className="text-sm text-neutral-400 mt-1">Company Valuation, Assumption</p>
             </div>
           </div>
 
           <p className="text-neutral-300 leading-relaxed max-w-3xl">
-            100K shares at current valuation represents $300K&nbsp;&mdash; offered as equity alignment,
-            not compensation. Every metric is growing month over month. The next tranche of growth
-            takes this nuclear. Priced at today&rsquo;s valuation&nbsp;&mdash; the upside scales with the show.
+            We made the assumption of 100K shares at a soon to be valuation representing $300K to just get a baseline, not compensation.
+            On our side, every metric is growing month over month. The next tranche of growth
+            takes this nuclear. Priced at today&rsquo;s valuation, the upside scales with the show.
           </p>
         </div>
       </section>
